@@ -10,4 +10,12 @@
               <h5>Address: <%= @dog.address %></h5>
             </div>
         </div>
-    </div>
+
+  <div class="container-right">
+    <%= simple_form_for([@dog]) do |f| %>
+      <%# <%= f.input :start_date, as: :date, html5: true%>
+      <%# <%= f.input :end_date, as: :date, html5: true%>
+      <%= f.submit class: "btn-flat btn-flat:hover", value: "Request" %>
+    <% end %>
+  </div>
+</div>
