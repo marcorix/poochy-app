@@ -1,6 +1,11 @@
 class DogsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_dog, only: [:show]
+  
+  
+  def index
+    @dogs = Dog.all
+  end
 
   def new
     @dog = Dog.new()
@@ -25,5 +30,6 @@ class DogsController < ApplicationController
   def dog_params
     params.require(:dog).permit(:name, :size, :age, :description, :gender, :address, :photo)
   end
+
 
 end
