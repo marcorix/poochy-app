@@ -1,21 +1,15 @@
-<div class="container-left">
-  <div class="card-trip-booking">
-        <div class="details-container">
-          <div class="cars-info">
-              <h5>Name: <%= @dog.name %></h5>
-              <h5>Size: <%= @dog.size %></h5>
-              <h5>Age: <%= @dog.age %></h5>
-              <h5>Description: <%= @dog.description %></h5>
-              <h5>Gender: <%= @dog.gender %> </h5>
-              <h5>Address: <%= @dog.address %></h5>
-            </div>
-        </div>
 
-  <div class="container-right">
-    <%= simple_form_for([@dog]) do |f| %>
-      <%# <%= f.input :start_date, as: :date, html5: true%>
-      <%# <%= f.input :end_date, as: :date, html5: true%>
-      <%= f.submit class: "btn-flat btn-flat:hover", value: "Request" %>
-    <% end %>
-  </div>
-</div>
+<h5>Name: <%= @dog.name %></h5>
+<h5>Breed: <%= @dog.breed %></h5>
+<h5>Size: <%= @dog.size %></h5>
+<h5>Age: <%= @dog.age %></h5>
+<h5>Description: <%= @dog.description %></h5>
+<h5>Gender: <%= @dog.gender %> </h5>
+<h5>Address: <%= @dog.address %></h5>
+<hr>
+<%= simple_form_for([@dog, @booking]) do |f| %>
+  <%= f.input :start_date, as: :date, html5: true%>
+  <%= f.input :end_date, as: :date, html5: true%>
+  <%= f.submit class: "btn-flat btn-flat:hover" %>
+<% end %>
+
