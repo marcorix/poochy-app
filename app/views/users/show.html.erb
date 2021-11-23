@@ -1,13 +1,40 @@
+<% if @user.owner? %>
+  <h1>My Dogs</h1>
+<h3><%= "You haven't added any dogs yet!" if @user.dogs.empty? %></h3>
 <div class="container-left">
   <div class="card-trip-booking">
         <div class="details-container">
           <div class="cars-info">
-              <h5>Name: <%= @dog.name %></h5>
-              <h5>Size: <%= @dog.size %></h5>
-              <h5>Age: <%= @dog.age %></h5>
-              <h5>Description: <%= @dog.description %></h5>
-              <h5>Gender: <%= @dog.gender %> </h5>
-              <h5>Address: <%= @dog.address %></h5>
+              <%= @dogs.each do |dog| %>
+              <h2> Name: <%= dog.name %></h2>
+              <h2> Size: <%= dog.size %></h2>
+              <h2> Age: <%=  dog.age %></h2>
+              <h2> Description: <%=  dog.description %></h2>
+              <h2> Likes: <%=  dog.likes %></h2>
+              <h2> Address: <%=  dog.address %></h2>
+              <h2> Gender: <%=  dog.gender%></h2>
+            <% end %>
             </div>
         </div>
     </div>
+
+<% else %>
+  <h1><h1>My Dog Bookings</h1>
+<h3><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h3>
+<div class="card-grid">
+ <% @user.bookings.each do |booking| %>
+  <div class="card-trip">
+        <%= cl_image_tag booking.dog.photo.key%>
+    <div class="card-trip-infos">
+      <div>
+        <%= link_to booking.dog.name, dog_path(booking.dog) %>
+        <p>from: <%= booking.start_date %></p>
+        <p>to: <%= booking.end_date %></p>
+      </div>
+      <img src="https://avatars.githubusercontent.com/u/90570222?v=4" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
+<% end %>
+</div>
+<br></h1>
+<% end %>
