@@ -1,0 +1,14 @@
+<h1 class="titlefont">Add Your Dog</h1>
+<hr>
+<div class="form-container">
+  <%= simple_form_for(@dog) do |f| %>
+    <%= f.input :name, placeholder: "Herbert" %>
+    <%= f.input :address, placeholder: "10 Downing Street, LONDON, SW1A 2AA" %>
+    <%= f.input :age, placeholder: "Years"%>
+    <%= f.input :gender, collection: ['Female', 'Male'], as: :radio_buttons %>
+    <%= f.input :size, collection: ['Small', 'Medium', 'Large'], as: :radio_buttons %>
+    <%= f.input :description, placeholder: "Happy dog that likes..."  %>
+    <%# <%= f.input :photo, input_html: { class: "hidden" } %>
+    <%= f.submit value: "Add Dog" %>
+  <% end %>
+</div>
