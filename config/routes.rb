@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :dogs do
     resources :bookings
   end
+  resources :users, only: [ :show ]
 end
