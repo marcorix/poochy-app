@@ -1,0 +1,11 @@
+<div class="cars-container">
+  <%= @dogs.each do |dog| %>
+    <h2> Name: <%= dog.name %></h2>
+    <h2> Size: <%= dog.size %></h2>
+    <h2> Age: <%=  dog.age %></h2>
+    <h2> Description: <%=  dog.description %></h2>
+    <h2> Likes: <%=  dog.likes %></h2>
+    <h2> Address: <%=  dog.address %></h2>
+    <h2> Gender: <%=  dog.gender%></h2>
+    <% end %>
+</div>
