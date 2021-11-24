@@ -23,6 +23,18 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.update(confirmed: true)
+    redirect_to request.referrer
+  end
+
+  def reject
+    @booking = Booking.find(params[:id])
+    @booking.update(confirmed: false)
+    redirect_to request.referrer
+  end
+
   private
 
   # Only allow a list of trusted parameters through.
