@@ -16,15 +16,18 @@ class DogsController < ApplicationController
   end
 
   def new
-    @dog = Dog.new()
+    @dog = Dog.new
   end
 
   def create
+
     @dog = Dog.new(dog_params)
     @dog.user = current_user
     if @dog.save
       redirect_to dogs_path
+      puts "saved"
     else
+      puts "no saved"
       render :new
     end
   end
