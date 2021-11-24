@@ -4,7 +4,11 @@ class DogsController < ApplicationController
 
 
   def index
-    @dogs = Dog.all
+    if params[:query].present?
+      @dogs = Dog.search_by_breed_and_size_and_gender(params[:query])
+    else
+      @dogs = Dog.all
+    end
   end
 
   def show

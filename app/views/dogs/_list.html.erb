@@ -1,14 +1,4 @@
-<div>
-      <%= form_tag dogs_path, method: :get, class: 'form-inline' do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control flex-grow-1",
-          placeholder: "Find a dog"
-        %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-<div>
+<div class="div">
   <% @dogs.each do |dog| %>
       <div>
         <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill %>
