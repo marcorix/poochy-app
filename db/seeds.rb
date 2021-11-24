@@ -49,6 +49,17 @@ dog = Dog.new(
 dog.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 dog.save!
 
+
+user = User.create!(
+          email: "qwer@hotmail.com",
+          password: "123456",
+          first_name: "Paul",
+          last_name: "Ross",
+          owner: true,
+          poochies: 3
+)
+
+
 file = URI.open("https://images.unsplash.com/photo-1546527868-ccb7ee7dfa6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHVwcHl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60.jpg")
 dog = Dog.new(
         name: "Tommy",
@@ -60,6 +71,21 @@ dog = Dog.new(
         description: "The cutest dog in the world",
         likes: 5,
         gender: "male"
+)
+dog.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
+dog.save!
+
+file = URI.open("https://images.unsplash.com/photo-1534628854350-62b395c4a2c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80")
+dog = Dog.new(
+        name: "Axel",
+        age: 2,
+        size: "medium",
+        breed: "German Sheppard",
+        user: user,
+        address: "2 Mastmaker Rd, London E14 9AW",
+        description: "The cutest dog in the world",
+        likes: 3,
+        gender: "female"
 )
 dog.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 dog.save!
