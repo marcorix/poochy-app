@@ -3,16 +3,22 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control flex-grow-1",
-          placeholder: "Find a dog"
+          placeholder: "Search for breed or size (small, medium, large)"
         %>
         <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </div>
 <div>
+   <% if params[:query].blank? %>
+      <%= pluralize @dogs.count, 'dog' %> available
+    <% else %>
+      <%= pluralize @dogs.count, 'result' %> for "<code><%= params[:query] %></code>"
+    <% end %>
   <% @dogs.each do |dog| %>
       <div>
         <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill %>
         <h2> Name: <%= dog.name %></h2>
+        <h2> Breed: <%= dog.breed %></h2>
         <h2> Size: <%= dog.size %></h2>
         <h2> Age: <%=  dog.age %></h2>
         <h2> Description: <%=  dog.description %></h2>
