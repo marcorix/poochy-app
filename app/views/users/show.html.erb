@@ -57,20 +57,26 @@
         <%# <%= cl_image_tag booking.dog.photo.key%>
     <div class="card-trip-infos">
       <div>
+        <img src="https://avatars.githubusercontent.com/u/90570222?v=4" class="card-trip-user avatar-bordered" />
+          <p>Leon Wisskirchen <%= @user.first_name %> <%= @user.last_name %> would like to walk</p>
+
         <%= link_to booking.dog.name, dog_path(booking.dog) %>
         <p>from: <%= booking.start_date %></p>
         <p>to: <%= booking.end_date %></p>
         </div>
-        <img src="https://avatars.githubusercontent.com/u/90570222?v=4" class="card-trip-user avatar-bordered" />
+          <p>Number of walks: 4 <%= @user.poochies %></p>
+          <p>Description: I am a 24 y old dog lover</p>
+          <p>Email: <%= @user.email %></p>
         </div>
         <% if booking.confirmed == false %>
            <p>Status of Request: Pending</p>
         <% else%>
            <p>Status of Request: Accepted</p>
         <% end%>
+        <br>
         <td class="booking-<%= booking.id %>">
-            <%= link_to "#{ booking.confirmed ? 'Accept' : 'Accept' }", accept_booking_path(booking), method: :patch, remote: :true %>
-            <%= link_to "#{ booking.confirmed ? 'Decline' : 'Decline' }", reject_booking_path(booking), method: :patch, remote: :false %>
+            <%= link_to "#{ booking.confirmed ? 'Accept' : 'Accept' }", accept_booking_path(booking), method: :patch, remote: :true, class: "btn-flat"%>
+            <%= link_to "#{ booking.confirmed ? 'Decline' : 'Decline' }", reject_booking_path(booking), method: :patch, remote: :false, class: "btn-flat"%>
         </td>
   </div>
 </div>
