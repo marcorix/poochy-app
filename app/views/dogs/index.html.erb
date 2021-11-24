@@ -1,6 +1,7 @@
 <div class="cars-container">
-  <%= @dogs.each do |dog| %>
-  <%= dog %>
+<% @dogs.each do |dog| %>
+  <div>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <h2> Name: <%= dog.name %></h2>
     <h2> Size: <%= dog.size %></h2>
     <h2> Age: <%=  dog.age %></h2>
@@ -10,6 +11,7 @@
     <h2> Gender: <%=  dog.gender%></h2>
       <%= link_to 'View dog', dog_path(dog), class: "btn btn-flat" %>
       <p> ---------------------------- </p>
+  </div>
     <% end %>
     <%= link_to 'Map', dogs_map_path, class: "btn btn-flat" %>
 </div>

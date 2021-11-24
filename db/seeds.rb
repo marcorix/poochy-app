@@ -45,3 +45,7 @@ dog = Dog.new(
 )
 dog.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 dog.save!
+
+
+
+puts 'Finish!'
