@@ -9,6 +9,12 @@ class DogsController < ApplicationController
     else
       @dogs = Dog.all
     end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'dogs/list', locals: { dogs: @dogs }, formats: [:html] }
+    end
+
   end
 
   def show
@@ -20,14 +26,11 @@ class DogsController < ApplicationController
   end
 
   def create
-
     @dog = Dog.new(dog_params)
     @dog.user = current_user
     if @dog.save
       redirect_to dogs_path
-      puts "saved"
     else
-      puts "no saved"
       render :new
     end
   end
