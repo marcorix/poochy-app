@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'dogs/map', to: 'dogs#map'
   resources :dogs do
-    resources :bookings
+    resources :bookings, only: [ :new, :create ,:show ]
   end
   resources :users, only: [ :show ]
+  resources :bookings, only: [ :index ] do
+    member do
+      patch :accept
+      patch :reject
+    end
+  end
 end
