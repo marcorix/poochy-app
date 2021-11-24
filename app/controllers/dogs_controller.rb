@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_dog, only: [:show]
+  before_action :set_dog, only: [:show, :update]
 
 
   def index
@@ -22,6 +22,15 @@ class DogsController < ApplicationController
       redirect_to dogs_path
     else
       render :new
+    end
+  end
+
+  def update
+    # @dog = Dog.find(params[:id]) before-action inplace
+    if @dog.update(dog_params)
+      redirect_to dog_path(@dog)
+    else
+      render :show
     end
   end
 
