@@ -1,4 +1,15 @@
-<h1>Poochy</h1>
-<p>My best friend!</p>
- <%= link_to 'View dogs', dogs_path, class: "btn btn-flat" %>
- <%= link_to 'Add a dog', new_dog_path, class: "btn btn-flat" %>
+   <div style="background-color:#F6AE99;min-height:100vh;">
+  <div class="logo">
+     <%= image_tag "logo2.png" %>
+  </div>
+  <div class="homebtns">
+    <div class="home-btn">
+    <%= image_tag "owner.png", class:"btn-img" %>
+    <%= link_to 'Become an owner', dogs_path, class: "btn btn-flat" %>
+    </div>
+    <div class="home-btn">
+    <%= image_tag "owner.png", class:"btn-img" %>
+    <%= link_to 'Become a walker', new_dog_path, class: "btn btn-flat" %>
+    </div>
+  </div>
+   </div>

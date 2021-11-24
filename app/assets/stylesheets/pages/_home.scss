@@ -1,1 +1,48 @@
 // Specific CSS for your home-page
+
+.homebtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.home-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.btn-img {
+  width: 300px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.btn-flat {
+  padding: 24px 24px;
+  border-radius: 4px;
+  background: #1BCB7F;
+  color: white;
+  width: 300px;
+  font-size: 24px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  img{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    max-width: 800px;
+  }
+
+}
