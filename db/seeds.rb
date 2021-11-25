@@ -52,6 +52,7 @@ dog.save!
 
 
 user = User.create!(
+
           email: "owner2@gmail.com",
           password: "123456",
           first_name: "Owner",
@@ -91,6 +92,7 @@ dog = Dog.new(
 )
 dog.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 dog.save!
+
 
 user = User.create!(
           email: "walker@gmail.com",

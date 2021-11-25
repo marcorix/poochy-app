@@ -38,6 +38,7 @@
     <p> Gender: <%=  dog.gender%></p>
   <% end %>
 
+
 <h1>My Booking Requests</h1>
   <% if @user == current_user %>
   <% @user.dogs.each do |dog| %>
@@ -57,6 +58,7 @@
     <p> __________________</p>
     <% end %>
   <% end %>
+
 <% end %>
 <% end %>
 
