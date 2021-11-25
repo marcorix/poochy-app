@@ -1,7 +1,41 @@
+<div class="profile-wrapper">
+  <div class="side-nav">
+    <%= link_to 'About' %>
+    <% if @user == current_user %>
+      <%= link_to 'Dashboard', user_dashboard_path(current_user)	 %>
+    <% end %>
+  </div>
+  <div class="bio-wrapper">
+    <h3>Name</h3>
+    <h4>Email</h4>
+    <h4>Description</h4>
+  </div>
 
-<h1>Profile</h1>
-  <p>Name: Leon W. <%= @user.first_name %> <%= @user.last_name %> </p>
-  <p>From: <%= booking.start_date %> to <%=booking.end_date %>
-  <p>Description: I am a 24 y old dog lover</p>
-  <p>Number of walks: 4 <%= @user.poochies %></p>
-  <p>Email: <%= @user.email %></p>
+  <%# REVIEW FORM %>
+  <div id="reviews">
+    <% if @user.reviews.blank? %>
+       <p>No reviews yet... <%= @user.first_name %></p>
+    <% else %>
+      <% @user.reviews.each do |review| %>
+        <p id="review-<%= review.id %>"><%= review.content %></p>
+        <p>Stars: <%= review.rating %></p>
+        <hr>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @user != current_user && @user.dogs.empty? %>
+    <div class="container">
+      <h1>Leave a review</h1>
+      <div class="row">
+        <div class="col-xs-4">
+          <%= simple_form_for([@user, @review], remote: true) do |f| %>
+            <%= f.input :content %>
+            <%= f.input :rating, collection: (1..5).to_a, label: "Rate this Walker" %>
+            <%= f.submit "Send your review" %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

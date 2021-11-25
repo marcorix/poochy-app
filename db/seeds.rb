@@ -10,10 +10,10 @@ puts 'Creating 3 dogs...'
 
 
 user = User.create!(
-          email: "newuser@hotmail.com",
+          email: "owner1@hotmail.com",
           password: "123456",
-          first_name: "Mario",
-          last_name: "Rossi",
+          first_name: "Owner",
+          last_name: "One",
           owner: true,
           poochies: 3
 )
@@ -51,10 +51,10 @@ dog.save!
 
 
 user = User.create!(
-          email: "qwer@hotmail.com",
+          email: "owner2@hotmail.com",
           password: "123456",
-          first_name: "Paul",
-          last_name: "Ross",
+          first_name: "Owner",
+          last_name: "Two",
           owner: true,
           poochies: 3
 )
@@ -90,6 +90,13 @@ dog = Dog.new(
 dog.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 dog.save!
 
-
+user = User.create!(
+          email: "walker@hotmail.com",
+          password: "123456",
+          first_name: "Walker",
+          last_name: "Only",
+          owner: true,
+          poochies: 3
+)
 
 puts 'Finish!'
