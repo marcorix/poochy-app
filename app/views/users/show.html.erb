@@ -1,15 +1,17 @@
 <h1><%= @user.first_name %> <%= @user.last_name %> - Dashboard</h1>
 
+<<<<<<< HEAD
 <% if @user.dogs.empty? %>
 <%# if @user.owner? %>
+=======
+>>>>>>> master
 <h1>My Dog Bookings</h1>
 <h2><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h2>
 <div class="card-grid">
  <% @user.bookings.each do |booking| %>
   <div class="card-trip">
-        <%# <%= cl_image_tag booking.dog.photo.key%>
+        <%= cl_image_tag @dog.photo.key%>
     <div class="card-trip-infos">
-      <div>
         <%= link_to booking.dog.name, dog_path(booking.dog) %>
         <p>from: <%= booking.start_date %></p>
         <p>to: <%= booking.end_date %></p>
@@ -19,11 +21,13 @@
            <p>Status of Booking: Accepted</p>
         <% end%>
       </div>
-      <img src="https://avatars.githubusercontent.com/u/90570222?v=4" class="card-trip-user avatar-bordered" />
     </div>
   </div>
+
   </div>
   <br>
+</div>
+
 <% end %>
 
   <p>_________________________________________________________</p>
@@ -31,6 +35,7 @@
 <% else %>
 
 <h1>My Dogs</h1>
+<<<<<<< HEAD
 <div class="container-left">
   <div class="card-trip-booking">
         <div class="details-container">
@@ -84,6 +89,40 @@
   <% end %>
   <% end %>
 <hr>
+
+
+  <% @dogs.each do |dog| %>
+    <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill %>
+    <p> Name: <%= dog.name %></p>
+    <p> Size: <%= dog.size %></p>
+    <p> Age: <%=  dog.age %></p>
+    <p> Description: <%=  dog.description %></p>
+    <p> Likes: <%=  dog.likes %></p>
+    <p> Address: <%=  dog.address %></p>
+    <p> Gender: <%=  dog.gender%></p>
+  <% end %>
+
+<h1>My Booking Requests</h1>
+  <% if @user == current_user %>
+  <% @user.dogs.each do |dog| %>
+    <% dog.bookings.each do |booking| %>
+      <p>Name: Leon W. <%= @user.first_name %> <%= @user.last_name %> </p>
+      <p>From: <%= booking.start_date %> to <%=booking.end_date %>
+      <p>Description: I am a 24 y old dog lover</p>
+      <p>Number of walks: 4 <%= @user.poochies %></p>
+      <p>Email: <%= @user.email %></p>
+      <%if booking.confirmed %>
+        <p>Status of Request: Accepted</p>
+      <% else %>
+        <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true, class: "btn-flat"%>
+        <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false, class: "btn-flat"%>
+      <% end %>
+    <p> __________________</p>
+    <% end %>
+  <% end %>
+<% end %>
+<% end %>
+
 <div id="reviews">
   <% if @user.reviews.blank? %>
     Be the first to leave a review for <%= @user.first_name %>
