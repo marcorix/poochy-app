@@ -22,11 +22,11 @@
       <img src="https://avatars.githubusercontent.com/u/90570222?v=4" class="card-trip-user avatar-bordered" />
     </div>
   </div>
-</div>
-<br></h1>
-<% end %>
+  </div>
+  <br>
+    <% end %>
 
-<p>_________________________________________________________</p>
+  <p>_________________________________________________________</p>
 
 <% else %>
 
@@ -49,10 +49,10 @@
         </div>
     </div>
 
-<h1>My Dog Requests</h1>
-<h2><%= "You have no bookings yet!" if @user.bookings.empty? %></h2>
-<div class="card-grid">
- <% @user.bookings.each do |booking| %>
+  <h1>My Dog Requests</h1>
+    <h2><%= "You have no bookings yet!" if @user.bookings.empty? %></h2>
+  <div class="card-grid">
+  <% @user.bookings.each do |booking| %>
   <div class="card-trip">
         <%# <%= cl_image_tag booking.dog.photo.key%>
     <div class="card-trip-infos">
@@ -79,7 +79,32 @@
             <%= link_to "#{ booking.confirmed ? 'Decline' : 'Decline' }", reject_booking_path(booking), method: :patch, remote: :false, class: "btn-flat"%>
         </td>
   </div>
+  </div>
+  <br>
+  <% end %>
+  <% end %>
+<hr>
+<div id="reviews">
+  <% if @user.reviews.blank? %>
+    Be the first to leave a review for <%= @user.first_name %>
+  <% else %>
+    <% @user.reviews.each do |review| %>
+      <p id="review-<%= review.id %>"><%= review.content %></p>
+      <p>Stars: <%= review.rating %></p>
+      <hr>
+    <% end %>
+  <% end %>
 </div>
-<br></h1>
-<% end %>
-<% end %>
+
+<h1>Leave a review</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <%= simple_form_for([@user, @review], remote: true) do |f| %>
+          <%= f.input :content %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate this Walker" %>
+          <%= f.submit "Send your review" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
