@@ -1,7 +1,7 @@
+<h1><%= @user.first_name %> <%= @user.last_name %> - Dashboard</h1>
+
 <% if @user.dogs.empty? %>
-
 <%# if @user.owner? %>
-
 <h1>My Dog Bookings</h1>
 <h2><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h2>
 <div class="card-grid">
@@ -24,7 +24,7 @@
   </div>
   </div>
   <br>
-    <% end %>
+<% end %>
 
   <p>_________________________________________________________</p>
 
@@ -34,7 +34,7 @@
 <div class="container-left">
   <div class="card-trip-booking">
         <div class="details-container">
-          <div class="cars-info">
+          <div>
               <% @dogs.each do |dog| %>
               <p> Name: <%= dog.name %></p>
               <p> Size: <%= dog.size %></p>
@@ -45,12 +45,12 @@
               <p> Gender: <%=  dog.gender%></p>
               <p> __________</p>
               <% end %>
-            </div>
+          </div>
         </div>
     </div>
 
   <h1>My Dog Requests</h1>
-    <h2><%= "You have no bookings yet!" if @user.bookings.empty? %></h2>
+    <h2><%= "You have no dog request yet!" if @user.bookings.empty? %></h2>
   <div class="card-grid">
   <% @user.bookings.each do |booking| %>
   <div class="card-trip">
