@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :dogs do
     resources :bookings, only: [ :new, :create ,:show ]
   end
-  resources :users, only: [ :show ]
+  resources :users, only: [ :show] do
+    resources :reviews, only: [:new, :create]
+    get '/profile', to: 'users#profile'
+    get '/dashboard', to: 'users#dashboard'
+  end
+
   resources :bookings, only: [ :index ] do
     member do
       get :accept
