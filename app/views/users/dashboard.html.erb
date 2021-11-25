@@ -31,14 +31,15 @@
 
       </div>
     <% else %>
+      <h1>My Dog Bookings</h1>
       <% @user.dogs.each do |dog| %>
         <% dog.bookings.each do |booking| %>
-          <p>Name: <%= link_to 'go', user_profile_path(booking.user_id) %>
-          <%= @user.first_name %> <%= @user.last_name %> </p>
-          <p>From: <%= booking.start_date %> to <%=booking.end_date %>
+          <p>Walker Name: <%= link_to @user.first_name, user_profile_path(booking.user_id) %></p>
           <p>Description: I am a 24 y old dog lover</p>
           <p>Number of walks: 4 <%= @user.poochies %></p>
           <p>Email: <%= @user.email %></p>
+          <p>From: <%= booking.start_date %> to <%=booking.end_date %>
+          <p>Requested Dog : <%= dog.name %></p>
           <%if booking.confirmed %>
             <p>Status of Request: Accepted</p>
           <% else %>
@@ -48,6 +49,20 @@
           <p> __________________</p>
         <% end %>
       <% end %>
+
+      <div>
+       <h1>My Dogs</h1>
+        <% @dogs.each do |dog| %>
+          <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill %>
+          <p> Name: <%= dog.name %></p>
+          <p> Size: <%= dog.size %></p>
+          <p> Age: <%=  dog.age %></p>
+          <p> Description: <%=  dog.description %></p>
+          <p> Likes: <%=  dog.likes %></p>
+          <p> Address: <%=  dog.address %></p>
+          <p> Gender: <%=  dog.gender%></p>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
