@@ -10,3 +10,14 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.profile-wrapper{
+  display: flex;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+  background-color: #f7e1da;
+}
