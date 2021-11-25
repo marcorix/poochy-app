@@ -1,0 +1,53 @@
+<div class="profile-wrapper">
+  <div class="side-nav">
+    <%= link_to 'About', user_profile_path(current_user)	 %>
+    <% if @user == current_user %>
+      <%= link_to 'Dashboard', user_dashboard_path(current_user)	 %>
+    <% end %>
+  </div>
+
+  <div class="bio-wrapper">
+    <% if @user.dogs.empty? %>
+      <h1>My Dog Bookings</h1>
+      <h2><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h2>
+      <div class="card-grid">
+        <% @user.bookings.each do |booking| %>
+          <div class="card-trip">
+            <div class="card-trip-infos">
+              <%= link_to booking.dog.name, dog_path(booking.dog) %>
+              <p>from: <%= booking.start_date %></p>
+              <p>to: <%= booking.end_date %></p>
+              <%= link_to user_profile_path(booking.user)	do %>
+                <p>Walker: <%= booking.user.email %></p>
+              <% end %>
+              <% if booking.confirmed == false %>
+                <p>Status of Booking: Pending</p>
+              <% else%>
+                <p>Status of Booking: Accepted</p>
+              <% end%>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    <% else %>
+      <% @user.dogs.each do |dog| %>
+        <% dog.bookings.each do |booking| %>
+          <p>Name: <%= link_to 'go', user_profile_path(booking.user_id) %>
+          <%= @user.first_name %> <%= @user.last_name %> </p>
+          <p>From: <%= booking.start_date %> to <%=booking.end_date %>
+          <p>Description: I am a 24 y old dog lover</p>
+          <p>Number of walks: 4 <%= @user.poochies %></p>
+          <p>Email: <%= @user.email %></p>
+          <%if booking.confirmed %>
+            <p>Status of Request: Accepted</p>
+          <% else %>
+            <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true, class: "btn-flat"%>
+            <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false, class: "btn-flat"%>
+          <% end %>
+          <p> __________________</p>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
