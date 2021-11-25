@@ -1,5 +1,6 @@
-<% if @user.dogs.empty? %>
+<h1><%= @user.first_name %> <%= @user.last_name %> - Dashboard</h1>
 
+<% if @user.dogs.empty? %>
 <h1>My Dog Bookings</h1>
 <h2><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h2>
 <div class="card-grid">
@@ -41,7 +42,8 @@
   <% if @user == current_user %>
   <% @user.dogs.each do |dog| %>
     <% dog.bookings.each do |booking| %>
-      <p>Name: Leon W. <%= @user.first_name %> <%= @user.last_name %> </p>
+      <p>Name: <%= link_to 'go', user_profile_path(booking.user_id) %>
+      <%= @user.first_name %> <%= @user.last_name %> </p>
       <p>From: <%= booking.start_date %> to <%=booking.end_date %>
       <p>Description: I am a 24 y old dog lover</p>
       <p>Number of walks: 4 <%= @user.poochies %></p>
@@ -57,3 +59,32 @@
   <% end %>
 <% end %>
 <% end %>
+
+
+<hr>
+<%# REVIEW FORM %>
+
+<div id="reviews">
+  <% if @user.reviews.blank? %>
+    <p>Be the first to leave a review for <%= @user.first_name %></p>
+  <% else %>
+    <% @user.reviews.each do |review| %>
+      <p id="review-<%= review.id %>"><%= review.content %></p>
+      <p>Stars: <%= review.rating %></p>
+      <hr>
+    <% end %>
+  <% end %>
+</div>
+
+<h1>Leave a review</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <%= simple_form_for([@user, @review], remote: true) do |f| %>
+          <%= f.input :content %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate this Walker" %>
+          <%= f.submit "Send your review" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
