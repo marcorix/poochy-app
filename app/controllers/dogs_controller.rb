@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_dog, only: [:show]
+  before_action :set_dog, only: [:show, :update]
 
 
   def index
@@ -9,6 +9,12 @@ class DogsController < ApplicationController
     else
       @dogs = Dog.all
     end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'dogs/list', locals: { dogs: @dogs }, formats: [:html] }
+    end
+
   end
 
   def show
@@ -16,7 +22,7 @@ class DogsController < ApplicationController
   end
 
   def new
-    @dog = Dog.new()
+    @dog = Dog.new
   end
 
   def create
@@ -26,6 +32,15 @@ class DogsController < ApplicationController
       redirect_to dogs_path
     else
       render :new
+    end
+  end
+
+  def update
+    # @dog = Dog.find(params[:id]) before-action inplace
+    if @dog.update(dog_params)
+      redirect_to dog_path(@dog)
+    else
+      render :show
     end
   end
 

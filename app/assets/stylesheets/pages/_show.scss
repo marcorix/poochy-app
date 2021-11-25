@@ -1,0 +1,29 @@
+.showpagecontainer{
+  max-height: 100vh;
+}
+
+.dog-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+
+  h5 {
+    padding: 5px;
+  }
+
+  #dog-name {
+  background-color: #F6AE99;
+  }
+
+}
+
+.attrib-container {
+  display: flex;
+}
+
+.edit-btn {
+  display: flex;
+  justify-content: center;
+  margin-left: 125px;
+}

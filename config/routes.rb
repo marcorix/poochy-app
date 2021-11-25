@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :users, only: [ :show ]
   resources :bookings, only: [ :index ] do
     member do
-      patch :accept
-      patch :reject
+      get :accept
+      get :reject
     end
   end
 end
