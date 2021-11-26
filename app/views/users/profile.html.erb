@@ -1,8 +1,16 @@
 <div class="profile-wrapper">
   <div class="side-nav">
-    <%= link_to 'About' %>
+    <%= link_to user_profile_path(current_user)	do %>
+    <i class="fas fa-user-circle fa-2x"></i>
+    <% end %>
     <% if @user == current_user %>
-      <%= link_to 'Dashboard', user_dashboard_path(current_user)	 %>
+      <%= link_to user_dashboard_path(current_user)	do %>
+        <i class="fas fa-archive fa-2x"></i>
+      <% end %>
+
+        <i class="fas fa-heart fa-2x"></i>
+        <i class="fas fa-comments fa-2x"></i>
+
     <% end %>
   </div>
   <div class="bio-wrapper">

@@ -58,6 +58,19 @@ user4 = User.new(
 user4.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 user4.save!
 
+file = URI.open("https://cdn.allfamous.org/people/avatars/boris-becker-tl22-allfamous.org.jpg")
+user5 = User.new(
+  email: "paulo@gmail.com",
+  password: "123456",
+  first_name: "Paulo",
+  last_name: "Dybala",
+  description: "Dogs are my passion, i have a real love for them.",
+  owner: false,
+  poochies: 12
+)
+user4.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
+user4.save!
+
 # DOGS---------------------------
 puts 'Creating dogs...'
 
