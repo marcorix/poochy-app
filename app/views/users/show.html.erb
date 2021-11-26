@@ -30,7 +30,7 @@
 
 <% else %>
 
-<h1>My Dogs</h1>
+  <h1>My Dogs</h1>
   <% @dogs.each do |dog| %>
     <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill %>
     <p> Name: <%= dog.name %></p>

@@ -6,9 +6,9 @@
     <% end %>
   </div>
   <div class="bio-wrapper">
-    <h3>Name</h3>
-    <h4>Email</h4>
-    <h4>Description</h4>
+    <h4>Name: <%= @user.first_name %> <%= @user.last_name %></h4>
+    <h4>Email: <%= @user.email %></h4>
+    <h4>About me: <%= @user.description %></h4>
   </div>
 
   <%# REVIEW FORM %>

@@ -5,7 +5,7 @@ def create
     @user = User.find(params[:user_id])
     @review.user = @user
     if @review.save
-      redirect_to user_path(@user, anchor: "review-#{@review.id}")
+      redirect_to user_profile_path(@user, anchor: "review-#{@review.id}")
     else
       flash[:alert] = "Something went wrong."
       render :new
