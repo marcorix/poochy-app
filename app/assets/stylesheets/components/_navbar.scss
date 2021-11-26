@@ -10,3 +10,23 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.profile-wrapper{
+  display: flex;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+  background-color: #716F81;
+  padding: 20px;
+}
+.side-nav i {
+ color: #F6AE99;
+ margin-top: 20px;
+}
+.side-nav i:hover {
+ color: #db9079;
+
+}

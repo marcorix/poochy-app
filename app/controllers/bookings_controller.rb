@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @booking.confirmed = false
 
     if @booking.save
-      redirect_to dog_booking_path(@dog, @booking)
+      redirect_to user_dashboard_path(current_user)
     else
       render :new
     end

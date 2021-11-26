@@ -1,0 +1,82 @@
+<div class="profile-wrapper">
+  <div class="side-nav">
+    <%= link_to user_profile_path(current_user)	do %>
+    <i class="fas fa-user-circle fa-2x"></i>
+    <% end %>
+    <% if @user == current_user %>
+      <%= link_to user_dashboard_path(current_user)	do %>
+        <i class="fas fa-archive fa-2x"></i>
+      <% end %>
+
+        <i class="fas fa-heart fa-2x"></i>
+        <i class="fas fa-comments fa-2x"></i>
+
+    <% end %>
+  </div>
+
+  <div class="bio-wrapper container">
+    <% if @user.dogs.empty? %>
+      <h1>My Dog Bookings</h1>
+      <h2><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h2>
+      <div class="card-grid">
+        <% @user.bookings.each do |booking| %>
+          <div class="card-trip">
+            <div class="card-trip-infos">
+              <%= link_to booking.dog.name, dog_path(booking.dog) %>
+              <p>from: <%= booking.start_date %></p>
+              <p>to: <%= booking.end_date %></p>
+              <p>Owned by: <%= link_to booking.dog.user.first_name, user_profile_path(booking.dog.user) %></p>
+              <% if booking.confirmed == false %>
+                <p>Status of Booking: Pending</p>
+              <% else%>
+                <p>Status of Booking: Accepted</p>
+              <% end%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <h1>My Dog Bookings</h1>
+      <% @user.dogs.each do |dog| %>
+        <% dog.bookings.each do |booking| %>
+          <div class="notification">
+            <%= cl_image_tag  booking.user.photo.key, class: "avatar-large avatar-bordered" %>
+            <div class="notification-content">
+              <p><small><%= booking.start_date %></small> - Requested Dog : <strong><%= dog.name %></strong></p>
+              <p>Walker Name: <%= link_to booking.user.first_name, user_profile_path(booking.user_id) %></p>
+            </div>
+
+            <%if booking.confirmed %>
+            <p>Status of Request: Accepted</p>
+            <% else %>
+            <div class="notification-actions">
+              <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
+              <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-lg"></i></i>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+
+       <h1>My Dogs</h1>
+        <div class="dogs-container">
+          <% @dogs.each do |dog| %>
+            <div class="dog-trip">
+              <div>
+                <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
+                <i class="fal fa-heart-circle"></i>
+                  <div class="details-container">
+                    <h4> Name: <%= dog.name %></h4>
+                    <h5> Breed: <%= dog.breed %></h5>
+                    <h5> Address: <%=  dog.address %></h5>
+                    <%= link_to 'View dog', dog_path(dog), class: "btn btn-flat" %>
+                  </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+    <% end %>
+  </div>
+</div>
