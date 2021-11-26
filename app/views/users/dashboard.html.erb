@@ -42,8 +42,8 @@
           <div class="notification">
             <%= cl_image_tag  booking.user.photo.key, class: "avatar-large avatar-bordered" %>
             <div class="notification-content">
-              <p><small><%= booking.start_date %></small> - Requested Dog : <strong><%= dog.name %></strong></p>
-              <p>Walker Name: <%= link_to booking.user.first_name, user_profile_path(booking.user_id) %></p>
+              <p><small> From <%= booking.start_date %> to <%= booking.end_date %> </small> </p>
+              <p>Requested Dog: <%= link_to booking.dog.name, user_profile_path(booking.user_id) %> | Walker Name: <%= link_to booking.user.first_name, user_profile_path(booking.user_id) %></p>
             </div>
 
             <%if booking.confirmed %>
