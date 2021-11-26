@@ -68,8 +68,8 @@ user5 = User.new(
   owner: false,
   poochies: 12
 )
-user4.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
-user4.save!
+user5.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
+user5.save!
 
 # DOGS---------------------------
 puts 'Creating dogs...'
