@@ -1,12 +1,28 @@
 <div data-controller="search-dogs">
-  <%= form_with url: dogs_path, method: :get, html: { class:
-    'mb-4', data: { search_dogs_target: 'form' } } do |f| %>
-      <%= f.text_field :query,
+
+
+  <div class="index-search-container">
+    <div class="search-map-layout">
+      <div class="search-bar">
+        <%= form_with url: dogs_path, method: :get, html: { class:
+        'mb-4', data: { search_dogs_target: 'form' } } do |f| %>
+        <%= f.text_field :query,
                   class: "form-control",
                   placeholder: 'Search for breed, gender or size (small, medium or large)',
                   value: params[:query],
                   data: { search_dogs_target: 'input', action: 'keyup->search-dogs#update' } %>
-  <% end %>
+        <% end %>
+      </div>
+
+    </div>
+    <div class="total-dogs">
+      <% if params[:query].blank? %>
+        <h3><%= pluralize @dogs.count, 'dog' %> available</h3>
+      <% else %>
+        <h3> <%= pluralize @dogs.count, 'result' %> for "<code><%= params[:query] %></code>" </h3>
+      <% end %>
+    </div>
+  </div>
 
   <%= render 'list', dogs: @dogs %>
 </div>
