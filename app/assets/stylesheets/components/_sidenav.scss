@@ -1,0 +1,18 @@
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+  background-color: #716F81;
+  padding: 20px;
+  a {
+    margin-left: 0;
+  }
+}
+.side-nav i {
+ color: #F6AE99;
+ margin-top: 20px;
+}
+.side-nav i:hover {
+ color: #db9079;
+
+}

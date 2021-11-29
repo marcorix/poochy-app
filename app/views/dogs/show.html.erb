@@ -1,33 +1,39 @@
+<div class="profile-wrapper">
 
+  <%= render 'shared/side_navbar' %>
 
-
-<div class="container-dogshow">
-  <div class="dog-info-show">
-    <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
-    <i class="fas fa-thumbs-up fas-position"></i>
-    <div class="show-container-text">
-      <p><%= @dog.name %></p>
-      <p><%= @dog.breed %></p>
-      <div class="icons-show">
-        <p><%= @dog.size.capitalize %></p> |
-        <p>Age :<%= @dog.age %></p> |
-        <% if @dog.gender == "female" %>
-          <p><i class="fas fa-venus fas-lg-card"></i></p>
-        <% else %>
-          <p><i class="fas fa-mars fas-lg-card"></i></p>
-        <% end %>
+  <div class="bio-wrapper container">
+    <div class="container-dogshow">
+      <div class="dog-info-show">
+        <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
+        <i class="fas fa-thumbs-up fas-position"></i>
+        <div class="show-container-text">
+          <p><%= @dog.name %></p>
+          <p><%= @dog.breed %></p>
+          <div class="icons-show">
+            <p><%= @dog.size.capitalize %></p> |
+            <p>Age: <%= @dog.age %></p> |
+            <% if @dog.gender == "female" %>
+              <p><i class="fas fa-venus fas-lg-card"></i></p>
+            <% else %>
+              <p><i class="fas fa-mars fas-lg-card"></i></p>
+            <% end %>
+            </div>
+            <p><%= @dog.description %></p>
+            <p><%= @dog.address %></p>
+            <p>Owner: <%=  link_to @dog.user.first_name, user_profile_path(@dog.user) %></p>
+          </div>
+        </div>
+        <%# Booking form %>
+        <div class="dog-booking-show">
+          <h3>Book This Poochy</h3>
+            <%= simple_form_for([@dog, @booking]) do |f| %>
+              <%= f.input :start_date, as: :date, html5: true%>
+              <%= f.input :end_date, as: :date, html5: true%>
+              <%= f.submit class: "btn-flat btn-flat:hover create-bookbtn" %>
+            <% end %>
+        </div>
       </div>
-      <p><%= @dog.description %></p>
-      <p><%= @dog.address %></p>
     </div>
-  </div>
-
-  <div class="dog-booking-show">
-  <h3>Book This Poochy</h3>
-    <%= simple_form_for([@dog, @booking]) do |f| %>
-            <%= f.input :start_date, as: :date, html5: true%>
-            <%= f.input :end_date, as: :date, html5: true%>
-            <%= f.submit class: "btn-flat btn-flat:hover create-bookbtn" %>
-      <% end %>
   </div>
 </div>

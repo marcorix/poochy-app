@@ -1,21 +1,9 @@
 <div class="profile-wrapper">
-  <div class="side-nav">
-    <%= link_to user_profile_path(current_user)	do %>
-    <i class="fas fa-user-circle fa-2x"></i>
-    <% end %>
-    <% if @user == current_user %>
-      <%= link_to user_dashboard_path(current_user)	do %>
-        <i class="fas fa-archive fa-2x"></i>
-      <% end %>
-
-        <i class="fas fa-heart fa-2x"></i>
-        <i class="fas fa-comments fa-2x"></i>
-
-    <% end %>
-  </div>
-
+  <%= render 'shared/side_navbar' %>
   <div class="bio-wrapper container">
-    <% if @user.dogs.empty? %>
+
+    <% if !current_user.owner %>
+    <%# User is not a Owner %>
       <h1>My Dog Bookings</h1>
       <h2><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h2>
       <div class="card-grid">
@@ -36,6 +24,8 @@
         <% end %>
       </div>
     <% else %>
+
+    <%# User is a Owner %>
       <h1>My Dog Bookings</h1>
       <% @user.dogs.each do |dog| %>
         <% dog.bookings.each do |booking| %>
@@ -47,7 +37,7 @@
             </div>
 
             <%if booking.confirmed %>
-            <p>Status of Request: Accepted</p>
+              <p>Status of Request: Accepted</p>
             <% else %>
             <div class="notification-actions">
               <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
@@ -55,28 +45,29 @@
             </div>
             <% end %>
           </div>
+          <hr>
         <% end %>
       <% end %>
 
+      <%# Show dogs %>
+      <h1>My Dogs</h1>
 
-       <h1>My Dogs</h1>
-        <div class="dogs-container">
-          <% @dogs.each do |dog| %>
-            <div class="dog-trip">
-              <div>
-                <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
-                <i class="fal fa-heart-circle"></i>
-                  <div class="details-container">
-                    <h4> Name: <%= dog.name %></h4>
-                    <h5> Breed: <%= dog.breed %></h5>
-                    <h5> Address: <%=  dog.address %></h5>
-                    <%= link_to 'View dog', dog_path(dog), class: "btn btn-flat" %>
-                  </div>
+      <div class="dogs-container">
+        <% @dogs.each do |dog| %>
+          <div class="dog-trip">
+            <div>
+              <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
+              <i class="fal fa-heart-circle"></i>
+              <div class="details-container">
+                <h4> Name: <%= dog.name %></h4>
+                  <h5>Breed: <%= dog.breed %></h5>
+                <h5>Address: <%=  dog.address %></h5>
+                <%= link_to 'View dog', dog_path(dog), class: "btn btn-flat" %>
               </div>
             </div>
-          <% end %>
-        </div>
-
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

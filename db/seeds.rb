@@ -7,7 +7,7 @@ Dog.destroy_all
 Review.destroy_all
 User.destroy_all
 
-puts 'Creating 3 users...'
+puts 'Creating users...'
 
 # USERS-----------------------------
 file = URI.open("https://awarding.org.uk/wp-content/uploads/2020/10/Boris-Johnson.jpg")
