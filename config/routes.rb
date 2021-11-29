@@ -17,4 +17,7 @@ Rails.application.routes.draw do
       get :reject
     end
   end
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end
