@@ -13,6 +13,15 @@
   <div class="dogs-container">
     <% dogs.each do |dog| %>
       <div class="dog-trip">
+<<<<<<< HEAD
+        <div>
+          <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
+          <i class="fal fa-heart-circle"></i>
+            <div class="details-container">
+              <p> Name: <%= dog.name %></p>
+              <p> Breed: <%= dog.breed %></p>
+              <p> Address: <%=  dog.address %></p>
+=======
         <i class="fab fa-gratipay"></i>
         <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
         <div class="details-container">
@@ -25,6 +34,7 @@
               <p class="address-text"> <i class="fas fa-home fas-large"></i><%=  dog.address %></p>
             </div>
             <div class="button-center">
+>>>>>>> 44ee99ace18c04aaa21ade52f01052c10e13f430
               <%= link_to 'View dog', dog_path(dog), class: "btn btn-flat" %>
             </div>
           </div>
