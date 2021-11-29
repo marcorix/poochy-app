@@ -1,63 +1,39 @@
+<div class="profile-wrapper">
 
-<div class="showpagecontainer">
-  <% if @dog.user_id == current_user.id %>
-    <h3> I own the dog</h3>
-    <div class="dogowner">
-      <div data-controller="edit-dog">
-        <div class="container">
-          <div class="dog-container">
-            <div class="dog-img mr-5">
-              <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
+  <%= render 'shared/side_navbar' %>
+
+  <div class="bio-wrapper container">
+    <div class="container-dogshow">
+      <div class="dog-info-show">
+        <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
+        <i class="fas fa-thumbs-up fas-position"></i>
+        <div class="show-container-text">
+          <p><%= @dog.name %></p>
+          <p><%= @dog.breed %></p>
+          <div class="icons-show">
+            <p><%= @dog.size.capitalize %></p> |
+            <p>Age: <%= @dog.age %></p> |
+            <% if @dog.gender == "female" %>
+              <p><i class="fas fa-venus fas-lg-card"></i></p>
+            <% else %>
+              <p><i class="fas fa-mars fas-lg-card"></i></p>
+            <% end %>
             </div>
-            <div class="dog-card" data-edit-dog-target='info'>
-              <div id="dog-name">
-                <h5><%= @dog.name %></h5>
-                <h5><%= @dog.breed %></h5>
-              </div>
-              <div class="attrib-container">
-                <div>
-                  <h5>Size: <%= @dog.size %></h5>
-                  <h5>Age: <%= @dog.age %></h5>
-                  <h5>Description: <%= @dog.description %></h5>
-                </div>
-                <div>
-                  <h5>Gender: <%= @dog.gender %> </h5>
-                  <h5>Address: <%= @dog.address %></h5>
-                  <h5>Likes: <%=  @dog.likes %></h5>
-                </div>
-              </div>
-            </div>
+            <p><%= @dog.description %></p>
+            <p><%= @dog.address %></p>
+            <p>Owner: <%=  link_to @dog.user.first_name, user_profile_path(@dog.user) %></p>
           </div>
-              <%= button_tag "Edit", class:"btn btn-primary edit-btn", data: { action: "click->edit-dog#displayForm" } %>
-              <%= simple_form_for @dog, html: { class: "#{'d-none' unless @dog.errors.any?}",  data: { edit_dog_target: 'form'} } do |f| %>
-                <%= f.input :name %>
-                <%= f.input :breed %>
-                <%= f.input :size %>
-                <%= f.input :age %>
-                <%= f.input :description %>
-                <%= f.input :gender %>
-                <%= f.input :address %>
-                <%= f.submit "Update dog", class: "btn btn-sm btn-primary btn-block mt-2" %>
-              <% end %>
         </div>
-      <div>
+        <%# Booking form %>
+        <div class="dog-booking-show">
+          <h3>Book This Poochy</h3>
+            <%= simple_form_for([@dog, @booking]) do |f| %>
+              <%= f.input :start_date, as: :date, html5: true%>
+              <%= f.input :end_date, as: :date, html5: true%>
+              <%= f.submit class: "btn-flat btn-flat:hover create-bookbtn" %>
+            <% end %>
+        </div>
+      </div>
     </div>
-
-    <% else %>
-    <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
-      <h5>Name: <%= @dog.name %></h5>
-      <h5>Breed: <%= @dog.breed %></h5>
-      <h5>Size: <%= @dog.size %></h5>
-      <h5>Age: <%= @dog.age %></h5>
-      <h5>Description: <%= @dog.description %></h5>
-      <h5>Gender: <%= @dog.gender %> </h5>
-      <h5>Address: <%= @dog.address %></h5>
-      <h5>Likes: <%=  @dog.likes %></h5>
-      <%= simple_form_for([@dog, @booking]) do |f| %>
-            <%= f.input :start_date, as: :date, html5: true%>
-            <%= f.input :end_date, as: :date, html5: true%>
-            <%= f.submit class: "btn-flat btn-flat:hover" %>
-      <% end %>
-    <% end %>
-
+  </div>
 </div>

@@ -1,27 +1,33 @@
-<head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
-</head>
+
 
 <div data-search-dogs-target="list">
 
-    <% if params[:query].blank? %>
-      <%= pluralize dogs.count, 'dog' %> available
-    <% else %>
-      <%= pluralize dogs.count, 'result' %> for "<code><%= params[:query] %></code>"
-    <% end %>
-  <%= link_to 'Map', dogs_map_path, class: "btn btn-flat" %>
+  <div class="total-dogs">
+      <% if params[:query].blank? %>
+        <h3><%= pluralize dogs.count, 'dog' %> available</h3>
+      <% else %>
+        <h3> <%= pluralize dogs.count, 'result' %> for "<code><%= params[:query] %></code>" </h3>
+      <% end %>
+  </div>
+
   <div class="dogs-container">
     <% dogs.each do |dog| %>
       <div class="dog-trip">
-        <div>
-          <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
-          <i class="fal fa-heart-circle"></i>
-            <div class="details-container">
-              <h2> Name: <%= dog.name %></h2>
-              <h2> Breed: <%= dog.breed %></h2>
-              <h2> Address: <%=  dog.address %></h2>
+        <i class="fab fa-gratipay"></i>
+        <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
+        <div class="details-container">
+          <div class="namecolor">
+            <h2><%= dog.name %></h2>
+          </div>
+          <div>
+            <div class="dog-detail-text">
+              <h4> <i class="fas fa-dog fas-large"></i><%= dog.breed %></h4>
+              <p class="address-text"> <i class="fas fa-home fas-large"></i><%=  dog.address %></p>
+            </div>
+            <div class="button-center">
               <%= link_to 'View dog', dog_path(dog), class: "btn btn-flat" %>
             </div>
+          </div>
         </div>
       </div>
     <% end %>
