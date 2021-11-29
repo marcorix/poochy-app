@@ -1,11 +1,11 @@
 <%# Show reviews section Only if the profile is about a walker %>
-
 <% if !@user.owner %>
+      <h2>My reviews</h2>
 
   <%# REVIEWS LIST %>
   <div id="reviews">
   <% if @user.reviews.blank? %>
-    <h2>No reviews yet </h2>
+    <p>No reviews yet</p>
   <% else %>
     <% @user.reviews.each do |review| %>
       <h4 id="review-<%= review.id %>"><%= review.content %></h4>
@@ -15,16 +15,17 @@
   <% end %>
   </div>
 
+
   <%# REVIEW FORM %>
   <% if @user != current_user %>
-    <div class="container">
       <h2>Leave a review</h2>
+    <div class="container">
       <div class="row">
         <div class="col-xs-4">
           <%= simple_form_for([@user, @review], remote: true) do |f| %>
-            <%= f.input :content %>
+            <%= f.input :content, placeholder: "What did you like? What could be done better?", class: "form-control-review" %>
             <%= f.input :rating, collection: (1..5).to_a, label: "Rate this Walker" %>
-            <%= f.submit "Send your review" %>
+            <%= f.submit "Send review", class: "btn btn-flat btn-review" %>
           <% end %>
         </div>
       </div>
