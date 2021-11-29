@@ -1,0 +1,7 @@
+  <%= image_tag dog.photo, height: 150, width: 200, crop: :fill%>
+    <h2><%= dog.name %></h2>
+    <h4> <i class="fas fa-dog fas-large"></i><%= dog.breed %></h4>
+    <h5 class="address-text"> <i class="fas fa-home fas-large"></i><%=  dog.address %></h5>
+    <%= link_to ' 🐾 Choose me! 🐾', dog_path(dog), class: "btn btn-flat", width:200, crop: :fill %>
+  </div>
+</div>

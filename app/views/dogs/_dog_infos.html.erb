@@ -1,16 +1,15 @@
 <div class="dog-card" data-controller="edit-dog" data-edit-dog-target="card">
-  <%= image_tag dog.photo.key %>
-
+  <%= image_tag dog.photo, height: 300, width: 400, crop: :fill%>
   <div class="dog-infos <%= 'd-none' if dog.errors.any? %>" data-edit-dog-target="infos">
-    <h2 title="<%= dog.title %> (<%= dog.year %>)">
-      <%= dog.title %><small>(<%= dog.year %>)</small>
+    <h2 title="<%= dog.name %> (<%= dog.age %>)">
+      <%= dog.name %><small>(<%= dog.age %>)</small>
     </h2>
     <i class="fas fa-pen fa-xs ml-2" data-action="click->edit-dog#displayForm"></i>
   </div>
 
   <%= simple_form_for dog, html: { class: dog.errors.any? ? '' : 'd-none', data: { edit_dog_target: 'form', action: 'submit->edit-dog#update' } } do |f| %>
-    <%= f.input :title %>
-    <%= f.input :year %>
+    <%= f.input :name %>
+    <%= f.input :age %>
     <%= f.submit "Update dog", class: "btn btn-sm btn-primary btn-block mt-2" %>
   <% end %>
 </div>
