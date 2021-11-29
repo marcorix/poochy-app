@@ -1,0 +1,25 @@
+<div class="side-nav">
+
+    <%= link_to user_profile_path(current_user)	do %>
+    <i class="fas fa-user-circle fa-2x"></i>
+    <% end %>
+
+    <%= link_to user_dashboard_path(current_user)	do %>
+      <i class="fas fa-archive fa-2x"></i>
+    <% end %>
+
+    <% if current_user.owner %>
+      <%= link_to new_dog_path	do %>
+      <i class="fas fa-plus-square fa-2x"></i>
+      <% end %>
+    <% else %>
+      <%= link_to dogs_path	do %>
+      <i class="fas fa-dog fas-large fa-2x"></i>
+      <% end %>
+    <% end %>
+
+    <i class="fas fa-heart fa-2x"></i>
+
+    <i class="fas fa-comments fa-2x"></i>
+
+  </div>
