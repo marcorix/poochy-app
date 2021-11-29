@@ -1,72 +1,45 @@
 <div class="profile-wrapper">
-  <div class="side-nav">
-    <%= link_to user_profile_path(current_user)	do %>
-    <i class="fas fa-user-circle fa-2x"></i>
-    <% end %>
-    <% if @user == current_user %>
-      <%= link_to user_dashboard_path(current_user)	do %>
-        <i class="fas fa-archive fa-2x"></i>
-      <% end %>
+  <%= render 'shared/side_navbar' %>
+  <div class="bio-wrapper">
 
-        <i class="fas fa-heart fa-2x"></i>
-        <i class="fas fa-comments fa-2x"></i>
-
-    <% end %>
-  </div>
-
-  <%# BOTSRAP CARD %>
-  <div class="bio-wrapper container">
-    <div class="card m-3" style="max-width: 540px;">
+    <%# BOTSRAP CARD BIO%>
+    <div class="card m-3 " style="max-width: 740px;">
       <div class="row g-0">
-        <div class="col-md-4">
-         <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-3 border border-3"  %>
+        <div class="col-md-3">
+          <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-3 border border-3"  %>
         </div>
-        <div class="col-md-8">
-         <div class="card-body">
-            <h5 h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h5>
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %> - <%= @user.owner ? 'Owner' : 'Walker' %></h5>
             <p class="card-text">"<%= @user.description %>"</p>
             <p class="card-text"><small class="text-muted"><%= @user.email %></small></p>
+
+          <% if !@user.owner %>
             <p class="card-text"><small class="text-muted">Poochies: <%= @user.poochies %></small></p>
-            <p class="card-text"><small class="text-muted">Member since: <%= @user.created_at %></small></p>
-         </div>
+          <% end %>
+
+          <p class="card-text"><small class="text-muted">Member since: <%= @user.created_at %></small></p>
         </div>
       </div>
     </div>
-    <%# REVIEW FORM %>
-  <div id="reviews">
-    <% if @user.reviews.blank? %>
-       <h2>No reviews yet for <%= @user.first_name %> <%= @user.last_name %></h2>
-    <% else %>
-      <% @user.reviews.each do |review| %>
-        <h4 id="review-<%= review.id %>"><%= review.content %></h4>
-        <h5>Stars: <%= review.rating %></h5>
-        <hr>
-      <% end %>
-    <% end %>
-  </div>
-
-  <% if @user != current_user && @user.dogs.empty? %>
-    <div class="container">
-      <h2>Leave a review</h2>
-      <div class="row">
-        <div class="col-xs-4">
-          <%= simple_form_for([@user, @review], remote: true) do |f| %>
-            <%= f.input :content %>
-            <%= f.input :rating, collection: (1..5).to_a, label: "Rate this Walker" %>
-            <%= f.submit "Send your review" %>
-          <% end %>
-      </div>
-    </div>
+<<<<<<< HEAD
   <% end %>
 
 <<<<<<< HEAD
 =======
+=======
+    <hr>
+>>>>>>> caeda323ed8e05072db3bc4cd1ebcbcd217f9bcb
 
+    <%= render 'reviews' %>
 
   </div>
+<<<<<<< HEAD
 
 
 
 
 >>>>>>> 44ee99ace18c04aaa21ade52f01052c10e13f430
+=======
+>>>>>>> caeda323ed8e05072db3bc4cd1ebcbcd217f9bcb
 </div>

@@ -4,9 +4,10 @@ puts 'Cleaning db...'
 
 Booking.destroy_all
 Dog.destroy_all
+Review.destroy_all
 User.destroy_all
 
-puts 'Creating 3 users...'
+puts 'Creating users...'
 
 # USERS-----------------------------
 file = URI.open("https://awarding.org.uk/wp-content/uploads/2020/10/Boris-Johnson.jpg")
@@ -45,7 +46,7 @@ user3 = User.new(
 user3.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 user3.save!
 
-file = URI.open("https://static.infofamouspeople.com/avatar/bn2q1pj2a2a8t41i6hh0_headshots_gino-dacampo-1.jpg")
+file = URI.open("https://c.ndtvimg.com/2021-08/6gck6u18_kim-jong-un-bloomberg-270_295x200_03_August_21.jpg")
 user4 = User.new(
   email: "franco@gmail.com",
   password: "123456",

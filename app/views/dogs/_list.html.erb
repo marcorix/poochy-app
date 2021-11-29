@@ -1,4 +1,14 @@
+
+
 <div data-search-dogs-target="list">
+
+  <div class="total-dogs">
+      <% if params[:query].blank? %>
+        <h3><%= pluralize dogs.count, 'dog' %> available</h3>
+      <% else %>
+        <h3> <%= pluralize dogs.count, 'result' %> for "<code><%= params[:query] %></code>" </h3>
+      <% end %>
+  </div>
 
   <div class="dogs-container">
     <% dogs.each do |dog| %>
@@ -16,12 +26,12 @@
         <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
         <div class="details-container">
           <div class="namecolor">
-            <h2> Name: <%= dog.name %></h2>
+            <h2><%= dog.name %></h2>
           </div>
           <div>
             <div class="dog-detail-text">
-              <h2> <i class="fas fa-dog fas-large"></i><%= dog.breed %></h2>
-              <h2 class="address-text"> <i class="fas fa-home fas-large"></i><%=  dog.address %></h2>
+              <h4> <i class="fas fa-dog fas-large"></i><%= dog.breed %></h4>
+              <p class="address-text"> <i class="fas fa-home fas-large"></i><%=  dog.address %></p>
             </div>
             <div class="button-center">
 >>>>>>> 44ee99ace18c04aaa21ade52f01052c10e13f430
