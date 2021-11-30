@@ -12,7 +12,9 @@
   <div class="dogs-container">
     <% dogs.each do |dog| %>
       <div class="dog-trip">
-        <i class="fab fa-gratipay"></i>
+        <div class="hearticon">
+          <i class="fab fa-gratipay"></i>
+        </div>
         <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
         <div class="details-container">
           <div class="namecolor">
