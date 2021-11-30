@@ -1,9 +1,12 @@
 <div class="profile-wrapper">
   <%= render 'shared/side_navbar' %>
-  <div class="bio-wrapper">
+  <div class="bio-wrapper container">
+
+    <h1></h1>
+      <h1>My Profile</h1>
 
     <%# BOTSRAP CARD BIO%>
-    <div class="card m-3 " style="max-width: 740px;">
+    <div class="card m-3 " style="max-width: 710px;">
       <div class="row g-0">
         <div class="col-md-3">
           <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-3 border border-3"  %>
@@ -11,8 +14,8 @@
         <div class="col-md-9">
           <div class="card-body">
             <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %> - <%= @user.owner ? 'Owner' : 'Walker' %></h5>
-            <p class="card-text">"<%= @user.description %>"</p>
-            <p class="card-text"><small class="text-muted"><%= @user.email %></small></p>
+            <p class="card-text"><small class="text-muted">About me: "<%= @user.description %>"</small>
+            <p class="card-text"><small class="text-muted"> My email: <%= @user.email %></small></p>
 
           <% if !@user.owner %>
             <p class="card-text"><small class="text-muted">Poochies: <%= @user.poochies %></small></p>
@@ -22,24 +25,13 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-  <% end %>
-
-<<<<<<< HEAD
-=======
-=======
-    <hr>
->>>>>>> caeda323ed8e05072db3bc4cd1ebcbcd217f9bcb
-
-    <%= render 'reviews' %>
-
   </div>
-<<<<<<< HEAD
-
-
-
-
->>>>>>> 44ee99ace18c04aaa21ade52f01052c10e13f430
-=======
->>>>>>> caeda323ed8e05072db3bc4cd1ebcbcd217f9bcb
+   <h1></h1>
+    <h1>Reviews</h1>
+      <div class="card m-3 " style="max-width: 710px;">
+      <div class="col-md-3">
+      <p> <%= render 'reviews' %> </p>
+      </div>
+      </div>
+</div>
 </div>
