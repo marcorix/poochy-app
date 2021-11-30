@@ -1,5 +1,4 @@
 
-
 <div data-search-dogs-target="list">
 
   <div class="total-dogs">
@@ -13,7 +12,9 @@
   <div class="dogs-container">
     <% dogs.each do |dog| %>
       <div class="dog-trip">
-        <i class="fab fa-gratipay"></i>
+        <div class="hearticon">
+          <i class="fab fa-gratipay"></i>
+        </div>
         <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
         <div class="details-container">
           <div class="namecolor">
@@ -25,7 +26,7 @@
               <p class="address-text"> <i class="fas fa-home fas-large"></i><%=  dog.address %></p>
             </div>
             <div class="button-center">
-              <%= link_to 'View dog', dog_path(dog), class: "btn btn-flat" %>
+              <%= link_to 'Choose me!', dog_path(dog), class: "btn btn-flat" %>
             </div>
           </div>
         </div>

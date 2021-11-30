@@ -6,6 +6,7 @@
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
   border-radius: 20px;
+  width:900px;
 }
 
 .notification .notification-content {
@@ -26,14 +27,30 @@
 
   display: flex;
   transition: ease .3s;
+  align-items: center;
 }
 
 .notification .notification-actions a {
   color: #999999;
   margin-left: 16px;
   font-size: 14px;
+  height: auto;
+
 }
 
 .notification .notification-actions a:hover {
   color: #555555;
+}
+
+.fa-check-circle:before {
+  margin-left: 10px;
+}
+
+.fa-times-circle:before {
+margin-left: 10px;
+}
+
+.fa-comment-dots:before {
+margin-left: 10px;
+margin-right: 10px;
 }

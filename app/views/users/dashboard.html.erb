@@ -3,81 +3,84 @@
   <div class="bio-wrapper container">
 
     <% if !current_user.owner %>
-    <%# User is not a Owner %>
+      <h1></h1>
       <h1>My Dog Bookings</h1>
       <h2><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h2>
-      <div class="card-grid">
-        <% @user.bookings.each do |booking| %>
-          <div class="card-trip">
-            <div class="card-trip-infos">
-              <%= link_to booking.dog.name, dog_path(booking.dog) %>
-              <p>from: <%= booking.start_date %></p>
-              <p>to: <%= booking.end_date %></p>
-              <p>Owned by: <%= link_to booking.dog.user.first_name, user_profile_path(booking.dog.user) %></p>
-              <% if booking.confirmed == false %>
-                <p>Status of Booking: Pending</p>
-              <% else%>
-                <p>Status of Booking: Accepted</p>
-              <% end%>
-
-              <%# CHAT BUTTON%>
-              <% chatroom = Chatroom.where(booking_id: booking.id) %>
-              <p><%= link_to 'chat', chatroom_path(chatroom[0])%> </p>
-
-            </div>
+      <% @user.bookings.each do |booking| %>
+        <div class="notification">
+          <div class="notification-content">
+            <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
+            <p>Requested Dog:<%=link_to booking.dog.name, user_profile_path(booking.dog.user)%> | Owned by:<%=link_to booking.dog.user.first_name, user_profile_path(booking.dog.user)%> </p>
           </div>
-        <% end %>
-      </div>
-    <% else %>
-
-    <%# User is a Owner %>
-      <h1>My Dog Bookings</h1>
-      <% @user.dogs.each do |dog| %>
-        <% dog.bookings.each do |booking| %>
-          <div class="notification">
-            <%= cl_image_tag  booking.user.photo.key, class: "avatar-large avatar-bordered" %>
-            <div class="notification-content">
-              <p><small><%= booking.start_date %></small> - Requested Dog : <strong><%= dog.name %></strong></p>
-              <p>Walker Name: <%= link_to booking.user.first_name, user_profile_path(booking.user_id) %></p>
-
-              <%# CHAT BUTTON%>
-              <% chatroom = Chatroom.where(booking_id: booking.id) %>
-              <p><%= link_to 'chat', chatroom_path(chatroom[0])%> </p>
-
-            </div>
+          <div class="notification-actions">
+            <%# CHAT BUTTON %>
+            <% chatroom = Chatroom.where(booking_id: booking.id) %>
+            <%= link_to "Send a Message", chatroom_path(chatroom[0])%><i class="fas fa-comment-dots fa-lg"></i></i>
 
             <%if booking.confirmed %>
               <p>Status of Request: Accepted</p>
             <% else %>
-            <div class="notification-actions">
-              <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
-              <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-lg"></i></i>
-            </div>
+              <p>Status of Request: Pending</p>
             <% end %>
           </div>
-          <hr>
-        <% end %>
+        </div>
+        <hr>
       <% end %>
+    <% else %>
+
+    <%# User is a Owner %>
+    <h1></h1>
+    <h1>My Dog Bookings</h1>
+    <% @user.dogs.each do |dog| %>
+      <% dog.bookings.each do |booking| %>
+        <div class="notification">
+          <%= cl_image_tag  booking.user.photo.key, class: "avatar-large avatar-bordered" %>
+          <div class="notification-content">
+            <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
+            <p>Requested Dog:<%=link_to booking.dog.name, user_profile_path(booking.user_id)%> | Walker Name:<%=link_to booking.user.first_name, user_profile_path(booking.user_id)%></p>
+          </div>
+          <%if booking.confirmed %>
+            <p>Status of Request: Accepted</p>
+          <% else %>
+          <div class="notification-actions">
+            
+            <%# CHAT BUTTON %>
+            <% chatroom = Chatroom.where(booking_id: booking.id) %>
+            <%= link_to "Send a Message", chatroom_path(chatroom[0])%><i class="fas fa-comment-dots fa-lg"></i></i>
+           
+            <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
+            <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-lg"></i></i>
+          </div>
+          <% end %>
+        </div>
+        <hr>
+      <% end %>
+    <% end %>
 
       <%# Show dogs %>
-      <h1>My Dogs</h1>
+    <h1>My Dogs</h1>
 
-      <div class="dogs-container">
-        <% @dogs.each do |dog| %>
-          <div class="dog-trip">
+    <div class="dogs-container">
+      <% @dogs.each do |dog| %>
+        <div class="dog-trip">
+          <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
+          <div class="details-container">
+            <div class="namecolor">
+              <h2><%= dog.name %></h2>
+            </div>
             <div>
-              <%= cl_image_tag dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
-              <i class="fal fa-heart-circle"></i>
-              <div class="details-container">
-                <h4> Name: <%= dog.name %></h4>
-                  <h5>Breed: <%= dog.breed %></h5>
-                <h5>Address: <%=  dog.address %></h5>
-                <%= link_to 'View dog', dog_path(dog), class: "btn btn-flat" %>
-              </div>
+              <div class="dog-detail-text">
+              <p class="breed-text"> <i class="fas fa-dog fas-large"></i><%= dog.breed %></p>
+              <p class="age-text"> <i class="fas fa-paw fas-large"></i><%=  dog.age %> years old</p>
+            </div>
+            <div class="button-center">
+              <%= link_to 'My Poochy', dog_path(dog), class: "btn btn-flat" %>
             </div>
           </div>
-        <% end %>
-      </div>
+         </div>
+        </div>
+      <% end %>
+    </div>
     <% end %>
   </div>
 </div>

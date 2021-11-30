@@ -1,20 +1,37 @@
 class DogsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_dog, only: [:show, :update]
-
+  protect_from_forgery except: :index
 
   def index
+
     if params[:query].present?
       @dogs = Dog.search_by_breed_and_size_and_gender(params[:query])
     else
       @dogs = Dog.all
     end
 
-    respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: 'dogs/list', locals: { dogs: @dogs }, formats: [:html] }
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @dogs.geocoded.map do |dog|
+      {
+        lat: dog.latitude,
+        lng: dog.longitude,
+        info_window: render_to_string(partial: "dog_map_infos", locals: { dog: dog }),
+        image_url: helpers.asset_url("dog_icon.jpg")
+      }
     end
 
+    respond_to do |format|
+      format.js {
+        return render partial: 'dogs/list', locals: { dogs: @dogs }
+      }
+      format.html # go do your thing
+    end
+
+    #render the index page by default
+  end
+
+  def map
   end
 
   def show

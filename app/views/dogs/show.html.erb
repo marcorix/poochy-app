@@ -7,13 +7,15 @@
       <div class="dog-info-show">
         <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
 
+
         <%= link_to favorites_update_path(dog: @dog), id:'favorite_link', remote: true  do %>
         <i class="fas fa-thumbs-up fas-position <%= favorite_class %>" id='favorite-link'></i>
         <% end %>
 
         <div class="show-container-text">
-          <p><%= @dog.name %></p>
-          <p><%= @dog.breed %></p>
+          <h2>Name: <%=  @dog.name %></h2>
+          <p><i class="fas fa-dog fas-large"></i><%= @dog.breed %></p>
+            <p><i class="fas fa-home fas-large"></i><%= @dog.address %></p>
           <div class="icons-show">
             <p><%= @dog.size.capitalize %></p> |
             <p>Age: <%= @dog.age %></p> |
@@ -23,8 +25,7 @@
               <p><i class="fas fa-mars fas-lg-card"></i></p>
             <% end %>
             </div>
-            <p><%= @dog.description %></p>
-            <p><%= @dog.address %></p>
+            <p>Doggy Bio: <%= @dog.description %></p>
             <p>Owner: <%=  link_to @dog.user.first_name, user_profile_path(@dog.user) %></p>
           </div>
         </div>

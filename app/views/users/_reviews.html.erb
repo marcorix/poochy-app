@@ -1,33 +1,29 @@
 <%# Show reviews section Only if the profile is about a walker %>
-
 <% if !@user.owner %>
 
   <%# REVIEWS LIST %>
   <div id="reviews">
-  <% if @user.reviews.blank? %>
-    <h2>No reviews yet </h2>
-  <% else %>
-    <% @user.reviews.each do |review| %>
-      <h4 id="review-<%= review.id %>"><%= review.content %></h4>
-      <h5>Stars: <%= review.rating %></h5>
-      <hr>
+    <% if @user.reviews.blank? %>
+      <p>No reviews yet</p>
+    <% else %>
+      <% @user.reviews.each do |review| %>
+        <h4 id="review-<%= review.id %>"><%= review.content %></h4>
+        <h5>Stars: <%= review.rating %></h5>
+        <hr>
+      <% end %>
     <% end %>
-  <% end %>
   </div>
+
 
   <%# REVIEW FORM %>
   <% if @user != current_user %>
-    <div class="container">
+    <div class="text-center">
       <h2>Leave a review</h2>
-      <div class="row">
-        <div class="col-xs-4">
-          <%= simple_form_for([@user, @review], remote: true) do |f| %>
-            <%= f.input :content %>
-            <%= f.input :rating, collection: (1..5).to_a, label: "Rate this Walker" %>
-            <%= f.submit "Send your review" %>
-          <% end %>
-        </div>
-      </div>
+      <%= simple_form_for([@user, @review], remote: true) do |f| %>
+        <%= f.input :content, placeholder: "What did you like? What could be done better?", class: "form-control-review" %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate this Walker" %>
+        <%= f.submit "Send review", class: "btn btn-flat btn-review" %>
+      <% end %>
     </div>
   <% end %>
 
