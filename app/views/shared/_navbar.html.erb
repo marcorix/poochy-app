@@ -28,7 +28,7 @@
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <h6><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %><h6>
+          <h6><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h6>
         </li>
       <% end %>
     </ul>
