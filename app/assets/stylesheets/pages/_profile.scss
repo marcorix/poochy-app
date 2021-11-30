@@ -1,0 +1,35 @@
+.profile-card{
+  border-radius: 40px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+}
+
+.profile-avatar img {
+  border-radius: 50%;
+  height: 150px;
+}
+
+.card-text {
+  font-size: 24px;
+}
+
+.card-text-email {
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.review-container {
+  margin-top: 16px;
+}
+
+.br-wrapper {
+  display: flex;
+  justify-content: center;
+}

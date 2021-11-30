@@ -6,32 +6,36 @@
       <h1>My Profile</h1>
 
     <%# BOTSRAP CARD BIO%>
-    <div class="card m-3 " style="max-width: 710px;">
-      <div class="row g-0">
-        <div class="col-md-3">
-          <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "rounded-circle m-3 border border-3"  %>
-        </div>
-        <div class="col-md-9">
-          <div class="card-body">
+    <div class="profile-card">
+      <div>
+        <div class="profile-avatar img d-flex align-items-center justify-content-center">
+          <div class='text-center'>
+          <%= cl_image_tag @user.photo.key %>
             <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %> - <%= @user.owner ? 'Owner' : 'Walker' %></h5>
-            <p class="card-text"><small class="text-muted">About me: "<%= @user.description %>"</small>
-            <p class="card-text"><small class="text-muted"> My email: <%= @user.email %></small></p>
+            <p class="card-text-email"><small class="text-muted"> <%= @user.email %></small></p>
+          <p class="card-text-email"><small class="text-muted">Member since: <%= @user.created_at.strftime("%b %d, %Y") %></small></p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p class="card-text" class="text-muted"> <strong>About</strong></p>
+            <p> <%= @user.description %> </p>
 
           <% if !@user.owner %>
             <p class="card-text"><small class="text-muted">Poochies: <%= @user.poochies %></small></p>
           <% end %>
 
-          <p class="card-text"><small class="text-muted">Member since: <%= @user.created_at %></small></p>
         </div>
       </div>
     </div>
   </div>
-   <h1></h1>
-    <h1>Reviews</h1>
-      <div class="card m-3 " style="max-width: 710px;">
-      <div class="col-md-3">
-      <p> <%= render 'reviews' %> </p>
-      </div>
-      </div>
+   <div class="container profile-card review-container">
+    <% if !@user.owner %>
+      <h1>Reviews</h1>
+        <div>
+          <p> <%= render 'reviews' %> </p>
+        </div>
+    <% end %>
+  </div>
 </div>
 </div>
