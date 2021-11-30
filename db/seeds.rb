@@ -2,10 +2,11 @@ require "open-uri"
 
 puts 'Cleaning db...'
 
-Booking.destroy_all
-Dog.destroy_all
-Review.destroy_all
 User.destroy_all
+Favorite.destroy_all
+Booking.destroy_all
+Review.destroy_all
+Dog.destroy_all
 
 puts 'Creating users...'
 

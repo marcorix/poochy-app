@@ -2,6 +2,7 @@ class Dog < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
   has_many :bookings
+  has_many :favorites, dependent: :destroy
   validates :name, :size, :age, :description, :gender, :address, :breed, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
