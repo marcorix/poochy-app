@@ -1,7 +1,7 @@
 class DogsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_dog, only: [:show, :update]
-#  protect_from_forgery except: :index
+  protect_from_forgery except: :index
 
   def index
 
