@@ -19,6 +19,7 @@ class DogsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @favorite_exist = Favorite.where(dog: @dog, user: current_user) == [] ? false : true
   end
 
   def new

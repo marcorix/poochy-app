@@ -6,7 +6,11 @@
     <div class="container-dogshow">
       <div class="dog-info-show">
         <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
-        <i class="fas fa-thumbs-up fas-position"></i>
+
+        <%= link_to favorites_update_path(dog: @dog), id:'favorite_link', remote: true  do %>
+        <i class="fas fa-thumbs-up fas-position <%= favorite_class %>" id='favorite-link'></i>
+        <% end %>
+
         <div class="show-container-text">
           <p><%= @dog.name %></p>
           <p><%= @dog.breed %></p>

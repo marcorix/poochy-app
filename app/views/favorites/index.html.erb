@@ -1,0 +1,38 @@
+<div class="profile-wrapper">
+
+  <%= render 'shared/side_navbar' %>
+
+  <div class="bio-wrapper container">
+
+    <div data-controller="search-dogs">
+      <h1>My Favorites poochies</h1>
+
+      <div class="dogs-container">
+
+        <h3> <%= "You don't have favorites yet, go to find one!" if @favorites.empty? %> </h3>
+
+        <% @favorites.each do |fav| %>
+            <div class="dog-trip">
+            <i class="fab fa-gratipay"></i>
+            <%= cl_image_tag fav.dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
+            <div class="details-container">
+              <div class="namecolor">
+                <h2><%= fav.dog.name %></h2>
+              </div>
+            <div>
+            <div class="dog-detail-text">
+              <h4> <i class="fas fa-dog fas-large"></i><%= fav.dog.breed %></h4>
+              <p class="address-text"> <i class="fas fa-home fas-large"></i><%=  fav.dog.address %></p>
+            </div>
+            <div class="button-center">
+              <%= link_to 'View dog', dog_path(fav.dog), class: "btn btn-flat" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    </div>
+  </div>
+</div>
