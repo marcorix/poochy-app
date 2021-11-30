@@ -3,27 +3,27 @@
   <div class="bio-wrapper container">
 
     <% if !current_user.owner %>
-    <%# User is not a Owner %>
+    <h1></h1>
       <h1>My Dog Bookings</h1>
       <h2><%= "You haven't booked any dogs yet!" if @user.bookings.empty? %></h2>
-      <div class="card-grid">
-        <% @user.bookings.each do |booking| %>
-          <div class="card-trip">
-            <div class="card-trip-infos">
-              <%= link_to booking.dog.name, dog_path(booking.dog) %>
-              <p>from: <%= booking.start_date %></p>
-              <p>to: <%= booking.end_date %></p>
-              <p>Owned by: <%= link_to booking.dog.user.first_name, user_profile_path(booking.dog.user) %></p>
-              <% if booking.confirmed == false %>
-                <p>Status of Booking: Pending</p>
-              <% else%>
-                <p>Status of Booking: Accepted</p>
-              <% end%>
+       <% @user.bookings.each do |booking| %>
+          <div class="notification">
+            <div class="notification-content">
+              <p><small>From <%= booking.start_date %> to <%= booking.end_date %></small></p>
+              <p>Requested Dog:<%=link_to booking.dog.name, user_profile_path(booking.dog.user)%> | Owned by:<%=link_to booking.dog.user.first_name, user_profile_path(booking.dog.user)%> </p>
+            </div>
+             <div class="notification-actions">
+              <%= link_to "Send a Message", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-comment-dots fa-lg"></i></i>
+              <%if booking.confirmed %>
+               <p>Status of Request: Accepted</p>
+              <% else %>
+               <p>Status of Request: Pending</p>
+            <% end %>
             </div>
           </div>
+          <hr>
         <% end %>
-      </div>
-    <% else %>
+  <% else %>
 
     <%# User is a Owner %>
     <h1></h1>
