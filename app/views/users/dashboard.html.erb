@@ -40,7 +40,7 @@
               <p>Status of Request: Accepted</p>
             <% else %>
             <div class="notification-actions">
-              <%= link_to "Send Message", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-comment-dots fa-lg"></i></i>
+              <%= link_to "Send a Message", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-comment-dots fa-lg"></i></i>
               <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
               <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-lg"></i></i>
             </div>
