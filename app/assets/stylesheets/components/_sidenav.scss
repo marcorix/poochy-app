@@ -1,9 +1,10 @@
 .side-nav {
   display: flex;
   flex-direction: column;
-  height:100vh;
   background-color: #716F81;
-  padding: 20px;
+  padding: 35px;
+  position: sticky;
+  top: 0;
   a {
     margin-left: 0;
   }
