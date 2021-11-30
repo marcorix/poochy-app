@@ -17,6 +17,11 @@ class BookingsController < ApplicationController
     @booking.confirmed = false
 
     if @booking.save
+      @chatroom = Chatroom.new
+      @chatroom.user_id = current_user.id
+      @chatroom.booking_id = @booking.id
+      @chatroom.name = @dog.name
+      @chatroom.save
       redirect_to user_dashboard_path(current_user)
     else
       render :new
@@ -41,4 +46,8 @@ class BookingsController < ApplicationController
   def bookings_params
     params.require(:booking).permit(:start_date, :end_date)
   end
+
+  # def chatroom_params
+  #   params.require(:chatroom).permit(:name)
+  # end
 end

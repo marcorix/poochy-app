@@ -1,0 +1,22 @@
+
+<div class="container chatroom">
+
+    <%= cl_image_tag  @chatroom.booking.dog.photo.key, class: "avatar-large" %>
+    <h1>#<%= @chatroom.name %></h1>
+
+
+  <%= link_to 'Back to bookings', user_dashboard_path(current_user) %>
+
+ <div class="messages"
+  data-controller="chatroom-subscription"
+  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+>
+  <% @chatroom.messages.each do |message| %>
+    <%= render "messages/message", message: message %>
+  <% end %>
+</div>
+
+
+<%= simple_form_for [@chatroom, @message], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+<% end %>

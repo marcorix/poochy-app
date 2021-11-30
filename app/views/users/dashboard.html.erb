@@ -13,7 +13,10 @@
             <p>Requested Dog:<%=link_to booking.dog.name, user_profile_path(booking.dog.user)%> | Owned by:<%=link_to booking.dog.user.first_name, user_profile_path(booking.dog.user)%> </p>
           </div>
           <div class="notification-actions">
-            <%= link_to "Send a Message", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-comment-dots fa-lg"></i></i>
+            <%# CHAT BUTTON %>
+            <% chatroom = Chatroom.where(booking_id: booking.id) %>
+            <%= link_to "Send a Message", chatroom_path(chatroom[0])%><i class="fas fa-comment-dots fa-lg"></i></i>
+
             <%if booking.confirmed %>
               <p>Status of Request: Accepted</p>
             <% else %>
@@ -40,7 +43,11 @@
             <p>Status of Request: Accepted</p>
           <% else %>
           <div class="notification-actions">
-            <%= link_to "Send a Message", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-comment-dots fa-lg"></i></i>
+            
+            <%# CHAT BUTTON %>
+            <% chatroom = Chatroom.where(booking_id: booking.id) %>
+            <%= link_to "Send a Message", chatroom_path(chatroom[0])%><i class="fas fa-comment-dots fa-lg"></i></i>
+           
             <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
             <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-lg"></i></i>
           </div>
