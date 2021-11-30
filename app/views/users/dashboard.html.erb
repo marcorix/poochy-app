@@ -9,7 +9,7 @@
        <% @user.bookings.each do |booking| %>
           <div class="notification">
             <div class="notification-content">
-              <p><small>From <%= booking.start_date %> to <%= booking.end_date %></small></p>
+              <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y" %></small></p>
               <p>Requested Dog:<%=link_to booking.dog.name, user_profile_path(booking.dog.user)%> | Owned by:<%=link_to booking.dog.user.first_name, user_profile_path(booking.dog.user)%> </p>
             </div>
              <div class="notification-actions">
