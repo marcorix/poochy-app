@@ -2,7 +2,7 @@
 
   <%= render 'shared/side_navbar' %>
 
-  <div class="bio-wrapper container">
+  <div class="bio-wrapper">
 
     <div data-controller="search-dogs">
       <div class="index-search-container">
@@ -19,9 +19,14 @@
           </div>
         </div>
       </div>
-
-      <%= render 'list', dogs: @dogs %>
-
+      <div class="map-card-container">
+        <%= render 'list', dogs: @dogs %>
+        <div class="map" style="width: 50%; height: 100vh;"
+          data-controller="mapbox"
+          data-mapbox-markers-value="<%= @markers.to_json %>"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
     </div>
   </div>
 </div>
