@@ -14,21 +14,21 @@
       <% if user_signed_in? %>
 
         <li class="nav-item dropdown">
+          <%# <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-avatar avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-avatar avatar-bordered", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
-
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%= link_to "Chat", "#", class: "dropdown-item" %>
             <%= link_to "Another action", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
-          <h6><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h6>
 
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <h6><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h6>
         </li>
       <% end %>
     </ul>
