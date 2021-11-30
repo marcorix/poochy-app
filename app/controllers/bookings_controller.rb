@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
       @chatroom = Chatroom.new
       @chatroom.user_id = current_user.id
       @chatroom.booking_id = @booking.id
-      @chatroom.name = "Chatroom Tester"
+      @chatroom.name = @dog.name
       @chatroom.save
       redirect_to user_dashboard_path(current_user)
     else

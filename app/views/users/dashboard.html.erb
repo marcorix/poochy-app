@@ -19,6 +19,11 @@
               <% else%>
                 <p>Status of Booking: Accepted</p>
               <% end%>
+
+              <%# CHAT BUTTON%>
+              <% chatroom = Chatroom.where(booking_id: booking.id) %>
+              <p><%= link_to 'chat', chatroom_path(chatroom[0])%> </p>
+
             </div>
           </div>
         <% end %>
@@ -35,11 +40,10 @@
               <p><small><%= booking.start_date %></small> - Requested Dog : <strong><%= dog.name %></strong></p>
               <p>Walker Name: <%= link_to booking.user.first_name, user_profile_path(booking.user_id) %></p>
 
-              <%# CREATE CHAT BUTTON%>
-
-             <% chatroom = Chatroom.where(booking_id: booking.id) %>
-
+              <%# CHAT BUTTON%>
+              <% chatroom = Chatroom.where(booking_id: booking.id) %>
               <p><%= link_to 'chat', chatroom_path(chatroom[0])%> </p>
+
             </div>
 
             <%if booking.confirmed %>

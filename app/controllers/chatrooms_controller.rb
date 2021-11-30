@@ -11,6 +11,7 @@ class ChatroomsController < ApplicationController
     # # @chatroom = Chatroom.where(booking_id: @booking)
     @message = Message.new()
     @chatroom = Chatroom.find(params[:id])
+    @dog = Dog.where(id: @chatroom.booking_id)
   end
 
   def create

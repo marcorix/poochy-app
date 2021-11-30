@@ -1,6 +1,11 @@
 
 <div class="container chatroom">
-  <h1>#<%= @chatroom.name %></h1>
+
+    <%= cl_image_tag  @chatroom.booking.dog.photo.key, class: "avatar-large" %>
+    <h1>#<%= @chatroom.name %></h1>
+
+
+  <%= link_to 'Back to bookings', user_dashboard_path(current_user) %>
 
  <div class="messages"
   data-controller="chatroom-subscription"
