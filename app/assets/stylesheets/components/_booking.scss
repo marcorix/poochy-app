@@ -6,7 +6,7 @@
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
   border-radius: 20px;
-  width:692px;
+  width:900px;
 }
 
 .notification .notification-content {
@@ -48,4 +48,9 @@
 
 .fa-times-circle:before {
 margin-left: 10px;
+}
+
+.fa-comment-dots:before {
+margin-left: 10px;
+margin-right: 10px;
 }
