@@ -11,8 +11,8 @@
           <div class="card-trip">
             <div class="card-trip-infos">
               <%= link_to booking.dog.name, dog_path(booking.dog) %>
-              <p>from: <%= booking.start_date %></p>
-              <p>to: <%= booking.end_date %></p>
+              <p>from: <%= booking.start_date.strftime("%b %d, %Y") %></p>
+              <p>to: <%= booking.end_date.strftime("%b %d, %Y") %></p>
               <p>Owned by: <%= link_to booking.dog.user.first_name, user_profile_path(booking.dog.user) %></p>
               <% if booking.confirmed == false %>
                 <p>Status of Booking: Pending</p>
