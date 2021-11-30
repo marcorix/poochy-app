@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_11_30_121918) do
     t.boolean "confirmed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time"
     t.index ["dog_id"], name: "index_bookings_on_dog_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
