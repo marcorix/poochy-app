@@ -96,21 +96,34 @@
   }
 }
 
-
+.unsaved {
+  color:#716F81;
+  opacity: 0.7;
+}
 .saved {
-  color:red;
-
+  color:#B97A95;
+}
 .card {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .col-md-3 {
   max-width: 100%;
-  }
 }
+
 
 .form-control-review {
   height: 100px;
   width: 620px;
 
+}
+
+
+#favorite-link {
+  margin: 0;
+  font-size: 40px;
+  position: absolute;
+  right: 24px;
+  top: 18px;
+  opacity: 0.9;
 }
