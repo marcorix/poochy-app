@@ -2,11 +2,25 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  background: #A6DAD1;
-  padding: 8px 16px;
+  background: #F6AE99;
+  padding: 16px;
   border: 1px solid rgb(235,235,235);
   border-radius: 20px;
-  width:900px;
+  width:100%;
+
+  a {
+    color:#F4F4F4;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color:white;
+  }
+
+  p {
+    font-size: 24px;
+  }
 }
 
 .notification .notification-content {
@@ -53,4 +67,24 @@ margin-left: 10px;
 .fa-comment-dots:before {
 margin-left: 10px;
 margin-right: 10px;
+}
+
+
+#send-button {
+  background-color: #A6DAD1;
+  border-radius: 8px;
+  padding: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50px;
+  width: 160px;
+  align-items: center;
+  margin-right: 20px;
+}
+
+#send-button:hover {
+  text-decoration: none;
+  color: #F6AE99;
 }

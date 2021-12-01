@@ -10,12 +10,12 @@
         <div class="notification">
           <div class="notification-content">
             <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
-            <p>Requested Dog:<%=link_to booking.dog.name, user_profile_path(booking.dog.user)%> | Owned by:<%=link_to booking.dog.user.first_name, user_profile_path(booking.dog.user)%> </p>
+            <p>Requested Dog:<%=link_to booking.dog.name, dog_path(booking.dog)%> | Owned by:<%=link_to booking.dog.user.first_name, user_profile_path(booking.dog.user)%> </p>
           </div>
-          <div class="notification-actions">
             <%# CHAT BUTTON %>
             <% chatroom = Chatroom.where(booking_id: booking.id) %>
-            <%= link_to "Send a Message", chatroom_path(chatroom[0])%><i class="fas fa-comment-dots fa-lg"></i></i>
+            <%= link_to "Send a Message", chatroom_path(chatroom[0]), id: "send-button"%>
+          <div class="notification-actions">
 
             <%if booking.confirmed %>
               <p>Status of Request: Accepted</p>
@@ -37,17 +37,17 @@
           <%= cl_image_tag  booking.user.photo.key, class: "avatar-large avatar-bordered" %>
           <div class="notification-content">
             <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
-            <p>Requested Dog:<%=link_to booking.dog.name, user_profile_path(booking.user_id)%> | Walker Name:<%=link_to booking.user.first_name, user_profile_path(booking.user_id)%></p>
+            <p>Requested Dog:<%=link_to booking.dog.name, dog_path(booking.dog)%> | Walker Name:<%=link_to booking.user.first_name, user_profile_path(booking.user_id)%></p>
           </div>
           <%if booking.confirmed %>
             <p>Status of Request: Accepted</p>
           <% else %>
           <div class="notification-actions">
-            
+
             <%# CHAT BUTTON %>
             <% chatroom = Chatroom.where(booking_id: booking.id) %>
             <%= link_to "Send a Message", chatroom_path(chatroom[0])%><i class="fas fa-comment-dots fa-lg"></i></i>
-           
+
             <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
             <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-lg"></i></i>
           </div>
