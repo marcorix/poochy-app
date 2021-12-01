@@ -9,16 +9,24 @@
     <% end %>
 
     <% if current_user.owner %>
+
       <%= link_to new_dog_path	do %>
       <i class="fas fa-plus-square fa-2x"></i>
       <% end %>
+
     <% else %>
+
       <%= link_to dogs_path	do %>
       <i class="fas fa-dog fas-large fa-2x"></i>
       <% end %>
+
+      <%= link_to favorites_path	do %>
+      <i class="fas fa-heart fa-2x"></i>
+      <% end %>
+
     <% end %>
 
-    <i class="fas fa-heart fa-2x"></i>
+
 
     <i class="fas fa-comments fa-2x"></i>
 

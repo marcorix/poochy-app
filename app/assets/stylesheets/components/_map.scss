@@ -6,7 +6,12 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
+  width: 350px;
 }
+
+.mapboxgl-popup-content img {
+  object-fit: cover;
+ }
 
 .mapboxgl-popup-content p {
   margin: 5px;
@@ -31,4 +36,13 @@
 .map-card-container {
   width:100vw;
   display: flex;
+}
+
+.btn-width a {
+  width: 100%;
+}
+
+.map.mapboxgl-map {
+  margin-right: 16px;
+  margin-top: 60px;
 }
