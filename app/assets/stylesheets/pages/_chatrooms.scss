@@ -4,21 +4,25 @@
   background: #A6DAD1;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-radius: 20px;
   text-decoration: none;
-  display: flex;
   margin-bottom: 20px;
 
   h4 {
     text-decoration: none;
     color: #F4F4F4;
   }
-
+  i {
+    color: #F6AE99;
+    margin-right: 50px;
+  }
 
 }
 
 .card-product:hover {
   text-decoration: none;
+  background-color: #aae2d9;
 }
 
 .card-product img {
@@ -48,8 +52,7 @@
   padding: 16px;
 }
 
-.card-product-info {
-  p {
-    font-size: 20px;
-  }
+.card-product-infos {
+  display: flex;
+
 }

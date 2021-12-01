@@ -14,16 +14,18 @@
           <%= link_to chatroom_path(chatroom[0]) do %>
 
             <div class="card-product">
-              <%= cl_image_tag booking.dog.photo.key, class: "avatar-bordered" %>
               <div class="card-product-infos">
-                <% if @user.owner %>
-                  <h4><%= booking.dog.name%> | Walker: <%= booking.user.first_name %> </h4>
-                <% else %>
-                  <h4><%= booking.dog.name %> | Owned by:<%= booking.dog.user.first_name%> </h4>
-                <% end %>
-                <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
+                <%= cl_image_tag booking.dog.photo.key, class: "avatar-bordered" %>
+                <div class="chat-names">
+                  <% if @user.owner %>
+                    <h4><%= booking.dog.name%> | Walker: <%= booking.user.first_name %> </h4>
+                  <% else %>
+                    <h4><%= booking.dog.name %> | Owned by: <%= booking.dog.user.first_name%> </h4>
+                  <% end %>
+                  <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
+                </div>
               </div>
-              <div><i class="fas fa-comment-dots fa-lg"></i></div>
+              <div><i class="fas fa-comment-dots fa-3x"></i></div>
             </div>
             <hr>
           <% end %>
