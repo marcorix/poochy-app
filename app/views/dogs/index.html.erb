@@ -3,6 +3,9 @@
   <%= render 'shared/side_navbar' %>
 
   <div class="bio-wrapper">
+  <div class="poochytitle">
+    <h1>Find a poochy</h1>
+  </div>
 
     <div data-controller="search-dogs">
       <div class="index-search-container">
@@ -12,12 +15,19 @@
             'mb-4', data: { search_dogs_target: 'form' } } do |f| %>
             <%= f.text_field :query,
                       class: "form-control",
-                      placeholder: 'Search for breed, gender or size (small, medium or large)',
+                      placeholder: 'Search for breed, gender or size',
                       value: params[:query],
                       data: { search_dogs_target: 'input', action: 'keyup->search-dogs#update' } %>
             <% end %>
           </div>
         </div>
+          <div class="total-dogs">
+      <% if params[:query].blank? %>
+        <h3><%= pluralize @dogs.count, 'dog' %> available</h3>
+      <% else %>
+        <h3> <%= pluralize @dogs.count, 'result' %> for "<code><%= params[:query] %></code>" </h3>
+      <% end %>
+  </div>
       </div>
       <div class="map-card-container">
         <%= render 'list', dogs: @dogs %>
