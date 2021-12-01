@@ -24,11 +24,13 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [ :show ] do
-    resources :chatrooms, only: [ :index, :create]
+    resources :chatrooms, only: [ :create]
   end
 
   resources :chatrooms, only: [ :show ] do
     resources :messages, only: :create
   end
+
+  resources :chatrooms, only: [ :index]
 
 end

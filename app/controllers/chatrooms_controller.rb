@@ -1,8 +1,9 @@
 class ChatroomsController < ApplicationController
   def index
-    @booking = Booking.find(params[:booking_id])
-    @chatroom = Chatroom.where(booking_id: @booking)
+    # @booking = Booking.find(params[:booking_id])
+    # @chatroom = Chatroom.where(booking_id: @booking)
     # @chatrooms = Chatroom.where(user_id: current_user)
+    @user = current_user
   end
 
   def show
