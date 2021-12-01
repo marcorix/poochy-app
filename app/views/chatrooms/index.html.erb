@@ -2,9 +2,9 @@
   <%= render 'shared/side_navbar' %>
   <div class="bio-wrapper container">
 
-
-      <div class="profile-card col-8">
         <h1>Chatrooms</h1>
+
+      <div class="col-8">
         <% @user.bookings.each do |booking| %>
           <% chatroom = Chatroom.where(booking_id: booking.id) %>
           <%= link_to chatroom_path(chatroom[0]) do %>
@@ -22,9 +22,9 @@
                 <i class="fas fa-comment-dots fa-lg"></i></i>
               </div>
             </div>
+            <hr>
           <% end %>
         <% end %>
-        <hr>
       </div>
 
 

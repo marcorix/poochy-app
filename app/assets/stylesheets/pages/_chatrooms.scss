@@ -5,11 +5,10 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  justify-content:flex-start;
-  border-radius: 10px;
+  border-radius: 20px;
   text-decoration: none;
-
-
+  display: flex;
+  margin-bottom: 20px;
 }
 
 .card-product:hover {
@@ -40,3 +39,9 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+// .card-product-info {
+//   display: flex;
+//   justify-content:flex-start;
+//   margin-bottom: 20px;
+// }
