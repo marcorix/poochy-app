@@ -7,9 +7,8 @@
     <div data-controller="search-dogs">
       <h1>My Favorites poochies</h1>
 
+      <h3> <%= "You don't have favorites yet, go to find one!" if @favorites.empty? %> </h3>
       <div class="dogs-container">
-
-        <h3> <%= "You don't have favorites yet, go to find one!" if @favorites.empty? %> </h3>
 
         <% @favorites.each do |fav| %>
             <div class="dog-trip">
