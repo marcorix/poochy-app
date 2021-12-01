@@ -2,41 +2,38 @@
   <%= render 'shared/side_navbar' %>
   <div class="bio-wrapper container">
 
-    <h1></h1>
-      <h1>My Profile</h1>
+      <div class="titleprofile my-3 text-center">
+        <h1>My Profile</h1>
+      </div>
 
     <%# BOTSRAP CARD BIO%>
     <div class="profile-card">
-      <div>
-        <div class="profile-avatar img d-flex align-items-center justify-content-center">
+        <div class="profile-avatar img">
           <div class='text-center'>
           <%= cl_image_tag @user.photo.key %>
-            <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %> - <%= @user.owner ? 'Owner' : 'Walker' %></h5>
-            <p class="card-text-email"><small class="text-muted"> <%= @user.email %></small></p>
-          <p class="card-text-email"><small class="text-muted">Member since: <%= @user.created_at.strftime("%b %d, %Y") %></small></p>
+            <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %> </h5>
+            <h5 class="card-title-role"><%= @user.owner ? 'Owner' : 'Walker' %></h5>
+            <p class="card-text-email"><small> <%= @user.email %></small></p>
+          <p class="card-text-email"><small>Member since: <%= @user.created_at.strftime("%b %d, %Y") %></small></p>
           </div>
         </div>
-        <div>
-          <div>
-            <p class="card-text" class="text-muted"> <strong>About</strong></p>
+          <div class="description-card">
+            <h2 class="reviewfont"> <strong>About</strong></h2>
             <p> <%= @user.description %> </p>
 
           <% if !@user.owner %>
 
-            <p class="card-text"><small class="text-muted">Poochies: <%= @user.poochies %></small></p>
+            <h6 class="card-text">Poochies: <%= @user.poochies %></h6>
           <% end %>
-
-        </div>
-      </div>
     </div>
   </div>
     <% if !@user.owner %>
-   <div class="container profile-card review-container">
-      <h1>Reviews</h1>
+      <div class="container profile-card review-container">
+        <h1 class="reviewfont">Reviews</h1>
         <div>
           <p> <%= render 'reviews' %> </p>
         </div>
+      </div>
     <% end %>
-  </div>
 </div>
 </div>

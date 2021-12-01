@@ -5,31 +5,77 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 32px;
+  align-items: center;
+
+  .description-card {
+  height: 50%;
+  width: 50%;
+  color: #A6DBD1;
+  }
+
+  .profile-avatar {
+    height: 50%;
+    width: 50%;
+  }
 }
 
 .profile-avatar img {
   border-radius: 50%;
   height: 150px;
+  width: 150px;
 }
 
 .card-text {
+  font-family: 'Luckiest Guy', cursive;
   font-size: 24px;
+  color: #F6AE99;
 }
 
 .card-text-email {
   font-size: 20px;
   font-weight: lighter;
   text-align: center;
+  color: #716F81;
 }
 
 .review-container {
-  margin-top: 16px;
+  margin-top: 25px;
+  color: #F6AE99;
+  font-family: 'Luckiest Guy', cursive;
+  margin-bottom: 40px;
+  h4 {
+  color: #716F81;
+  }
 }
 
 .br-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.titleprofile h1 {
+  font-family:'Luckiest Guy', cursive;
+  font-size: 50px;
+  margin-top: 6px;
+  color: #A6DBD1;
+}
+
+.reviewfont {
+  font-family: 'Luckiest Guy', cursive;
+  color: #F6AE99;
+}
+.description-card p {
+  color: #716F81;
+  }
+
+.card-title {
+ color: #716F81;
+ margin-top: 10px;
+ font-weight: bold;
+}
+
+.card-title-role {
+color: #716F81;
 }

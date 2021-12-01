@@ -8,7 +8,10 @@
     <% else %>
       <% @user.reviews.each do |review| %>
         <h4 id="review-<%= review.id %>"><%= review.content %></h4>
-        <h5>Stars: <%= review.rating %></h5>
+        <h5><% review.rating.times do%>
+        <i class="fas fa-star"></i>
+        <% end %>
+        </h5>
         <hr>
       <% end %>
     <% end %>
