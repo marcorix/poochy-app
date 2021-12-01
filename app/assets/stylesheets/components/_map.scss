@@ -34,7 +34,7 @@
 }
 
 .map-card-container {
-  width:100vw;
+  width:90vw;
   display: flex;
 }
 
@@ -45,4 +45,8 @@
 .map.mapboxgl-map {
   margin-right: 16px;
   margin-top: 60px;
+}
+
+.mapboxgl-canvas {
+  width: 615.016px !important;
 }
