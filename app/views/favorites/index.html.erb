@@ -12,7 +12,7 @@
 
         <% @favorites.each do |fav| %>
             <div class="dog-trip">
-            <i class="fab fa-gratipay"></i>
+
             <%= cl_image_tag fav.dog.photo.key, height: 300, width: 400, crop: :fill, class: "dog-image" %>
             <div class="details-container">
               <div class="namecolor">
@@ -24,7 +24,7 @@
               <p class="address-text"> <i class="fas fa-home fas-large"></i><%=  fav.dog.address %></p>
             </div>
             <div class="button-center">
-              <%= link_to 'View dog', dog_path(fav.dog), class: "btn btn-flat" %>
+              <%= link_to 'Choose me!', dog_path(fav.dog), class: "btn btn-flat" %>
             </div>
           </div>
         </div>
