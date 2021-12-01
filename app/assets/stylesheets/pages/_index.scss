@@ -3,10 +3,11 @@
 
 .dogs-container {
    display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   margin: 40px;
-   width: 60vw;
-   grid-gap: 30px;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    grid-template-columns: 1fr 1fr;
+    margin: 40px;
+    width: 46vw;
+    grid-gap: 30px;
  }
 
 .dog-trip {
@@ -106,4 +107,8 @@
 
 .search-bar form input {
   margin-left: 340px;
+}
+
+.mapboxgl-map{
+      width: 39% !important;
 }
