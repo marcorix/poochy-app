@@ -23,3 +23,24 @@
 .nav-item-dropdown{
   margin-left: 20px;
 }
+
+.dropdown-item {
+  &:hover{
+    background-color: lightgrey;
+    width: 90%;
+  }
+}
+
+.navlogo {
+  width: 148px;
+  margin-top: -49px
+}
+
+#navlogo1 {
+  width: 50px;
+}
+
+.navlogo2 {
+  margin-left: -25px;
+  margin-top: 4px;
+}

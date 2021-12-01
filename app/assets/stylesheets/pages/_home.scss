@@ -29,7 +29,12 @@
   margin-left: 0;
   display: flex;
   align-items: center;
+  &:hover {
+    color:#F6AE99;
+  }
+
   font-family: 'Luckiest Guy', cursive;
+
 }
 
 
