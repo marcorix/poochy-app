@@ -4,9 +4,9 @@
 .dogs-container {
    display: grid;
     /* grid-template-columns: 1fr 1fr 1fr; */
-    grid-template-columns: 1fr 1fr;
-    margin: 40px;
-    width: 46vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 40px 0px;
+    width: 100vh;
     grid-gap: 30px;
  }
 
@@ -15,7 +15,6 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-left: 25px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -111,4 +110,9 @@
 
 .mapboxgl-map{
       width: 39% !important;
+}
+
+
+.bio-wrapper {
+  margin: 20px;
 }

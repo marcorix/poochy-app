@@ -44,12 +44,16 @@
             <%= link_to "Send a Message", chatroom_path(chatroom[0]), id: "send-button"%>
           <%if booking.confirmed %>
           <div class="notification-actions">
-            <p>Status: Accepted</p>
+            <h4>Status: Accepted</h4>
           </div>
           <% else %>
           <div class="notification-actions">
-            <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-2x"></i></i>
-            <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-2x"></i></i>
+            <p>Accept </p><%= link_to accept_booking_path(booking), method: :get, remote: :true do %>
+              <i class="fas fa-check-circle fa-2x"></i>
+            <% end %>
+            <p>Decline </p><%= link_to reject_booking_path(booking), method: :get, remote: :false do %>
+            <i class="fas fa-times-circle fa-2x"></i>
+            <% end %>
           </div>
           <% end %>
         </div>
