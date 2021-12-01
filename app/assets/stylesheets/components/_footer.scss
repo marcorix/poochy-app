@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: space-between;
   height: 10vh;
-  padding: 0px 50px;
+  padding: 0px 16px;
+  width: 100%;
   color: #0000004d;
 }
 .footer-links {
@@ -29,7 +30,8 @@
   color: black;
 }
 .page-container {
-  display: grid;
+  width: 100%;
   min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
 }
