@@ -1,7 +1,7 @@
 class Dog < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :favorites, dependent: :destroy
   validates :name, :size, :age, :description, :gender, :address, :breed, presence: true
   geocoded_by :address
