@@ -11,7 +11,7 @@
   border-radius: 20px;
 
   h1 {
-    border-bottom: 1px solid $gray-200;
+
     margin-bottom: 0;
     padding: 1rem;
   }
@@ -25,10 +25,15 @@
   #new_message {
     border-top: 1px solid $gray-200;
     padding: 1rem;
+    margin-top: 10px;
 
     .form-group {
       margin-bottom: 0;
     }
+  }
+  input {
+    border-radius: 10px;
+    border: none;
   }
 }
 
@@ -41,10 +46,12 @@
 }
 
 
-.chat-avatar {
+.chat-name-box {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $gray-200;
 
   img {
     height: 60px;
