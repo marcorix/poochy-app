@@ -1,14 +1,20 @@
 .card-product {
   overflow: hidden;
   height: 100px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: #A6DAD1;
   display: flex;
   align-items: center;
   border-radius: 20px;
   text-decoration: none;
   display: flex;
   margin-bottom: 20px;
+
+  h4 {
+    text-decoration: none;
+    color: #F4F4F4;
+  }
+
+
 }
 
 .card-product:hover {
@@ -29,19 +35,21 @@
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 20px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  text-decoration: none;
+  color: #716F81;
 }
 
 .card-product .card-product-infos {
   padding: 16px;
 }
 
-// .card-product-info {
-//   display: flex;
-//   justify-content:flex-start;
-//   margin-bottom: 20px;
-// }
+.card-product-info {
+  p {
+    font-size: 20px;
+  }
+}
