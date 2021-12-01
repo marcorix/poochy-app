@@ -5,11 +5,12 @@
   justify-content: space-between;
   height: 100px;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  color: #0000004d;
 }
 .footer-links {
   display: flex;
   align-items: center;
+  margin-top: 25px;
 }
 .footer-links a {
   color: black;
@@ -17,6 +18,8 @@
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
+  margin: 0px;
+  max-height: 55px;
 }
 .footer-links a:hover {
   opacity: 1;
@@ -24,4 +27,9 @@
 }
 .footer .fa-heart {
   color: black;
+}
+.page-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 }
