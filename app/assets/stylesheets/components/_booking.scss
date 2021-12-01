@@ -21,6 +21,7 @@
   p {
     font-size: 24px;
   }
+
 }
 
 .notification .notification-content {
@@ -37,7 +38,7 @@
   color: #999999;
   font-weight: bold;
 }
-.notification .notification-actions {
+.notification {
 
   display: flex;
   transition: ease .3s;
@@ -53,7 +54,7 @@
 }
 
 .notification .notification-actions a:hover {
-  color: #555555;
+  color: #F4F4F4;
 }
 
 .fa-check-circle:before {
@@ -87,4 +88,16 @@ margin-right: 10px;
 #send-button:hover {
   text-decoration: none;
   color: #F6AE99;
+}
+
+
+.notification-actions {
+  display: flex;
+  transition: ease .3s;
+  align-items: center;
+  width: 230px;
+  justify-content: right;
+  p {
+    font-size: 20px;
+  }
 }

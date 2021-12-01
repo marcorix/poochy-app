@@ -39,17 +39,17 @@
             <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
             <p>Requested Dog:<%=link_to booking.dog.name, dog_path(booking.dog)%> | Walker Name:<%=link_to booking.user.first_name, user_profile_path(booking.user_id)%></p>
           </div>
-          <%if booking.confirmed %>
-            <p>Status of Request: Accepted</p>
-          <% else %>
-          <div class="notification-actions">
-
             <%# CHAT BUTTON %>
             <% chatroom = Chatroom.where(booking_id: booking.id) %>
             <%= link_to "Send a Message", chatroom_path(chatroom[0]), id: "send-button"%>
-
-            <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
-            <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-lg"></i></i>
+          <%if booking.confirmed %>
+          <div class="notification-actions">
+            <p>Status: Accepted</p>
+          </div>
+          <% else %>
+          <div class="notification-actions">
+            <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-2x"></i></i>
+            <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-2x"></i></i>
           </div>
           <% end %>
         </div>
