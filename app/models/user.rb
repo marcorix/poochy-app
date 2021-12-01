@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  has_many :bookings
-  has_many :dogs
+  has_many :bookings, dependent: :destroy
+  has_many :dogs, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :chatrooms
-  has_many :favorites
+  has_many :chatrooms, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :messages, dependent: :destroy
 end

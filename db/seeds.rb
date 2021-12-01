@@ -7,6 +7,7 @@ Favorite.destroy_all
 Booking.destroy_all
 Review.destroy_all
 Dog.destroy_all
+Chatroom.destroy_all
 
 puts 'Creating users...'
 
