@@ -46,7 +46,7 @@
 
             <%# CHAT BUTTON %>
             <% chatroom = Chatroom.where(booking_id: booking.id) %>
-            <%= link_to "Send a Message", chatroom_path(chatroom[0])%><i class="fas fa-comment-dots fa-lg"></i></i>
+            <%= link_to "Send a Message", chatroom_path(chatroom[0]), id: "send-button"%>
 
             <%= link_to "Accept", accept_booking_path(booking), method: :get, remote: :true%><i class="fas fa-check-circle fa-lg"></i></i>
             <%= link_to "Decline", reject_booking_path(booking), method: :get, remote: :false%><i class="fas fa-times-circle fa-lg"></i></i>

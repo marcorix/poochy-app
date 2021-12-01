@@ -1,31 +1,62 @@
 <div class="profile-wrapper">
   <%= render 'shared/side_navbar' %>
   <div class="bio-wrapper container">
+    <h1>Chatrooms</h1>
 
-        <h1>Chatrooms</h1>
+    <div class="col-8">
+    <%# if user is a walker %>
+    <% if @user.owner %>
 
-      <div class="col-8">
-        <% @user.bookings.each do |booking| %>
+      <% @user.dogs.each do |dog| %>
+        <% dog.bookings.each do |booking| %>
+
           <% chatroom = Chatroom.where(booking_id: booking.id) %>
           <%= link_to chatroom_path(chatroom[0]) do %>
+
             <div class="card-product">
               <%= cl_image_tag booking.dog.photo.key, class: "avatar-bordered" %>
               <div class="card-product-infos">
                 <% if @user.owner %>
-                  <h4><%= booking.dog.name %> | Owned by:<%= booking.dog.user.first_name%> </h4>
-                <% else %>
                   <h4><%= booking.dog.name%> | Walker: <%= booking.user.first_name %> </h4>
+                <% else %>
+                  <h4><%= booking.dog.name %> | Owned by:<%= booking.dog.user.first_name%> </h4>
                 <% end %>
                 <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
               </div>
-              <div>
-                <i class="fas fa-comment-dots fa-lg"></i></i>
-              </div>
+              <div><i class="fas fa-comment-dots fa-lg"></i></div>
             </div>
             <hr>
           <% end %>
         <% end %>
-      </div>
+      <% end %>
+
+    <% else %>
+
+      <% @user.bookings.each do |booking| %>
+        <% chatroom = Chatroom.where(booking_id: booking.id) %>
+        <%= link_to chatroom_path(chatroom[0]) do %>
+          <div class="card-product">
+            <%= cl_image_tag booking.dog.photo.key, class: "avatar-bordered" %>
+            <div class="card-product-infos">
+              <% if @user.owner %>
+                <h4><%= booking.dog.name %> | Owned by:<%= booking.dog.user.first_name%> </h4>
+              <% else %>
+                <h4><%= booking.dog.name%> | Walker: <%= booking.user.first_name %> </h4>
+              <% end %>
+              <p><small>From <%= booking.start_date.strftime("%b %d, %Y") %> to <%= booking.end_date.strftime("%b %d, %Y") %></small></p>
+            </div>
+            <div>
+              <i class="fas fa-comment-dots fa-lg"></i></i>
+            </div>
+          </div>
+          <hr>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+
+    </div>
 
 
   </div>
