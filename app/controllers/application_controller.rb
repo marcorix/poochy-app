@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   def favorite_class
-    return @favorite_exist ? 'unsaved' : 'saved'
+    return @favorite_exist ? 'saved' : 'unsaved'
   end
 
   helper_method :favorite_class
