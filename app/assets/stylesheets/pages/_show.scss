@@ -92,7 +92,7 @@
   padding: 0;
   border: none;
   border-radius: 5px;
-  padding-left: 105px;
+  padding-left: 130px;
   padding-top: 10px;
   input {
     text-align: center;
@@ -129,4 +129,42 @@
   right: 24px;
   top: 18px;
   opacity: 0.9;
+}
+
+
+.owner-box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 60px;
+  border-radius: 40px;
+  padding: 5px 8px;
+  background-color: #A6DAD1;
+
+
+  p {
+    margin-bottom: 0;
+    margin-left: 20px;
+    color: #B97A95;
+    font-weight: bold;
+    font-size: 20px;
+
+  }
+
+  p:hover {
+    text-decoration: none;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+
+  a {
+    margin-left: 0;
+  }
+}
+.owner-box:hover {
+
 }
