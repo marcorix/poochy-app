@@ -38,8 +38,18 @@
 }
 
 
-.message-box {
+.message-box1 {
   background-color: #A6DAD1;
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 5px;
+  small {
+    color: #B97A95;
+  }
+}
+
+.message-box2 {
+  background-color: #F4F4F4;
   border-radius: 10px;
   padding: 5px;
   margin-top: 5px;
