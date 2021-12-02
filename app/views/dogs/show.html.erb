@@ -26,12 +26,13 @@
             <% end %>
             </div>
             <p>Doggy Bio: <%= @dog.description %></p>
-            <%=  link_to user_profile_path(@dog.user) do %>
+
               <div class="owner-box">
                 <%= cl_image_tag @dog.user.photo.key, class: "avatar-bordered" %>
-                <p>Owner: <%=  @dog.user.first_name %></p>
+                <p>Owner: <%=  link_to @dog.user.first_name, user_profile_path(@dog.user) %></p>
               </div>
-              <% end %>
+
+
           </div>
         </div>
         <%# Booking form %>

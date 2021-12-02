@@ -139,13 +139,13 @@
   height: 60px;
   border-radius: 40px;
   padding: 5px 8px;
-  background-color: #A6DAD1;
+  // background-color: #A6DAD1;
 
 
   p {
     margin-bottom: 0;
     margin-left: 20px;
-    color: #B97A95;
+    color: #716F81;
     font-weight: bold;
     font-size: 20px;
 
@@ -162,9 +162,13 @@
   }
 
   a {
+    color:#B97A95;
     margin-left: 0;
+    text-decoration: none;
   }
-}
-.owner-box:hover {
-
+  a:hover {
+    color:#F6AE99;
+    margin-left: 0;
+    text-decoration: none;
+  }
 }
