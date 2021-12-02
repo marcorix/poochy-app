@@ -174,7 +174,7 @@ dog.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 dog.save!
 
 
-file = URI.open("https://i.pinimg.com/originals/f3/88/a5/f388a57004e78dfb34ae72c860df05ac.jpg")
+file = URI.open("https://doglime.com/wp-content/uploads/2019/03/All-About-English-Setter-Dog-Breed.jpg")
 dog = Dog.new(
   name: "Kinka",
   age: 1,
