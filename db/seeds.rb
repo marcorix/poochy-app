@@ -25,7 +25,7 @@ user1 = User.new(
 user1.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 user1.save!
 
-file = URI.open("https://racing-elite.com/wp-content/uploads/2020/05/echo/230347.jpg")
+file = URI.open("https://www.nme.com/wp-content/uploads/2019/12/Webp.net-resizeimage-4-5-1392x883.jpg")
 user2 = User.new(
   email: "roger@gmail.com",
   password: "123456",
@@ -64,10 +64,10 @@ user4.save!
 
 file = URI.open("https://cdn.allfamous.org/people/avatars/boris-becker-tl22-allfamous.org.jpg")
 user5 = User.new(
-  email: "paulo@gmail.com",
+  email: "lukas@gmail.com",
   password: "123456",
-  first_name: "Paulo",
-  last_name: "Dybala",
+  first_name: "Lukas",
+  last_name: "Smiths",
   description: "Dogs are my passion, i have a real love for them.",
   owner: false,
   poochies: 12
@@ -94,14 +94,14 @@ dog.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
 dog.save!
 
 
-file = URI.open("https://blog.myollie.com/content/images/2020/03/shutterstock_335297090.jpg")
+file = URI.open("https://i.etsystatic.com/18460845/r/il/bc918c/3156226889/il_1588xN.3156226889_45a7.jpg")
 dog = Dog.new(
-  name: "Ally",
+  name: "Croissant",
   age: 2,
-  size: "medium",
-  breed: "Greyhound",
+  size: "small",
+  breed: "Chihuahua",
   address: "118 Kingsland Road, London",
-  description: "Ally loves long walks to the dog park where he can run freely and play with the other dogs. He also loves to play fetch.",
+  description: "Croissant loves long walks to the dog park where he can run freely and play with the other dogs. He also loves to play fetch.",
   likes: 15,
   gender: "male",
   user: user1
