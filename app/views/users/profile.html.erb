@@ -12,18 +12,21 @@
           <div class='text-center'>
           <%= cl_image_tag @user.photo.key %>
             <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %> </h5>
-            <h5 class="card-title-role"><%= @user.owner ? 'Owner' : 'Walker' %></h5>
             <p class="card-text-email"><small> <%= @user.email %></small></p>
-          <p class="card-text-email"><small>Member since: <%= @user.created_at.strftime("%b %d, %Y") %></small></p>
+          <p class="card-text-email"><small>Member since <%= @user.created_at.strftime("%b %d, %Y") %></small></p>
           </div>
         </div>
           <div class="description-card">
-            <h2 class="reviewfont"> <strong>About</strong></h2>
-            <p> <%= @user.description %> </p>
+            <h2 class="reviewfont"> <strong>About Me</strong></h2>
+            <p class="card-title-role"><%= @user.owner ? 'I am a dog owner' : 'I am a dog walker' %> and <%= @user.description %></p>
+
 
           <% if !@user.owner %>
 
-            <h6 class="card-text">Poochies: <%= @user.poochies %></h6>
+            <h2 class="reviewfont"><strong>Poochies walked</strong> (<%= @user.poochies %>)</h2>
+            <% @user.poochies.times do %>
+            <span>🐶</span>
+            <% end %>
           <% end %>
     </div>
   </div>
