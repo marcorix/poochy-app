@@ -46,7 +46,17 @@
 }
 
 
-// .navbar-nav {
-//   display: flex;
-//   justify-content: center;
-// }
+.navbar-nav {
+  // display: flex;
+  // justify-content: center;
+  // background-color: aliceblue;
+  // border-radius: 20px;
+  // padding-left: 8px;
+  // opacity: 0.8;
+  align-items: center;
+
+  h6 {
+    font-weight: bold;
+  }
+
+}
