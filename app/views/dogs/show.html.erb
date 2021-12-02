@@ -13,7 +13,7 @@
         <% end %>
 
         <div class="show-container-text">
-          <h2>Name: <%=  @dog.name %></h2>
+          <h2><%=  @dog.name %></h2>
           <p><i class="fas fa-dog fas-large"></i><%= @dog.breed %></p>
             <p><i class="fas fa-home fas-large"></i><%= @dog.address %></p>
           <div class="icons-show">
@@ -26,7 +26,12 @@
             <% end %>
             </div>
             <p>Doggy Bio: <%= @dog.description %></p>
-            <p>Owner: <%=  link_to @dog.user.first_name, user_profile_path(@dog.user) %></p>
+            <%=  link_to user_profile_path(@dog.user) do %>
+              <div class="owner-box">
+                <%= cl_image_tag @dog.user.photo.key, class: "avatar-bordered" %>
+                <p>Owner: <%=  @dog.user.first_name %></p>
+              </div>
+              <% end %>
           </div>
         </div>
         <%# Booking form %>
@@ -35,7 +40,7 @@
             <%= simple_form_for([@dog, @booking]) do |f| %>
               <%= f.input :start_date, as: :date, html5: true%>
               <%= f.input :end_date, as: :date, html5: true%>
-              <%= f.submit class: "btn-flat btn-flat:hover create-bookbtn" %>
+              <%= f.submit class: "btn-flat btn-flat:hover create-bookbtn", value: "Book me!" %>
             <% end %>
         </div>
       </div>
