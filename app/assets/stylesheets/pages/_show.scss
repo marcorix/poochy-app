@@ -30,8 +30,9 @@
 
 .container-dogshow{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: 60px;
+  margin-left: 100px;
 }
 
 .dog-info-show{
@@ -42,6 +43,7 @@
   border-radius: 30px;
   background-color: white;
   box-shadow: 5px 10px 30px rgba(0,0,0,0.3);
+
   img {
     border-radius: 10px;
   }
@@ -76,7 +78,7 @@
 .dog-booking-show {
   width: 600px;
   height:400px;
-  margin: 0 auto;
+  margin-left: 100px;
   background-color: white;
   padding: 64px;
   border-radius: 30px;
@@ -90,7 +92,8 @@
   padding: 0;
   border: none;
   border-radius: 5px;
-  padding-left: 155px;
+  padding-left: 105px;
+  padding-top: 10px;
   input {
     text-align: center;
   }

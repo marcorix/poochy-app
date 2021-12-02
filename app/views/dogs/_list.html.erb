@@ -1,14 +1,6 @@
 
 <div data-search-dogs-target="list">
 
-  <div class="total-dogs">
-      <% if params[:query].blank? %>
-        <h3><%= pluralize dogs.count, 'dog' %> available</h3>
-      <% else %>
-        <h3> <%= pluralize dogs.count, 'result' %> for "<code><%= params[:query] %></code>" </h3>
-      <% end %>
-  </div>
-
   <div class="dogs-container">
     <% dogs.each do |dog| %>
       <div class="dog-trip">
